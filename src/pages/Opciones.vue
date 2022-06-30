@@ -1,10 +1,14 @@
-<template>
-	<div class="container">
-		<h6> 
-          	Atras <span style="cursor: pointer" class="ti-arrow-left" v-on:click.prevent="atras"></span>
-        </h6>
-        <br>
+<template>	
+	<!-- <div class="row"> -->
+	<div class="col-12">
+		<div class="bot">
+			<label v-on:click.prevent="atras" class="atras mb-4">
+	            Atras <span class="ti-arrow-left"></span>
+	        </label>
+        </div>
+        
 		<div class="gallery">
+
 			<div 
 				class="card text-white bg-info mb-3  zoom" 
 				style="max-width: 12rem;"
@@ -116,6 +120,7 @@
 			</div>
 		</div>
 	</div>
+	<!-- </div> -->
 </template>
 
 <script>
@@ -169,6 +174,7 @@
 	gap: 1rem;
 	grid-auto-rows: 8rem;
 	grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 12rem));
+	justify-content: center;
 }
 
 .zoom:hover{
@@ -176,10 +182,12 @@
 	transition: transform .2s;
 }
 
-@media (max-width: 480px) {
-	.container{
-		display: flex;
-		justify-content: center;
-	}
+.bot {
+	display: flex;
+    justify-content: center;
 }
+.bot label{
+	cursor: pointer;
+}
+
 </style>

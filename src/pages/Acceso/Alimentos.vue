@@ -1,37 +1,60 @@
 <template>
   <div class="row">
       <div class="col-12">
-      	
-          Atras <span style="cursor: pointer" class="ti-arrow-left" v-on:click.prevent="atras"></span>
-        
-          <label class="btn btn-danger" style="margin: 5px" v-on:click.prevent="crear">
+
+        <div class="barra">
+          <form class="form-inline my-2 my-lg-0">
+              <input
+                  class="form-control mr-sm-2 buscador"
+                  type="search"
+                  placeholder="Buscar"
+                  aria-label="Search"
+                  v-model="buscador"
+                  @keyup="buscarAlimentos"
+              >
+          </form>
+        </div>
+
+        <div class="barra">
+          <label v-on:click.prevent="atras" class="atras m-2">
+            Atras <span class="ti-arrow-left"></span>
+          </label>
+          
+          <label class="btn btn-success m-2"  v-on:click.prevent="crear">
               Crear
               <span style="cursor: pointer" class="ti-plus"></span>
           </label>
-        
-          <label class="btn btn-danger" style="margin: 5px">
-              Exportar Archivo
+          
+          <label class="btn btn-info m-2">
+              Exportar 
               <span class="ti-arrow-down"></span>
               <input style="display:none" v-on:click.prevent="exportar">
           </label>
           
           <form id="mainForm">
-            <label class="btn btn-info" style="margin: 5px">
-              Seleccionar Archivo
+            <label class="btn btn-dark m-2">
+              Seleccionar
               <span class="ti-exchange-vertical"></span>
               <input style="display:none" type="file" name="data" class="btn btn-danger">
             </label>
-            <label class="btn btn-success" style="margin: 5px">
-              Importar Archivo
+            <label class="btn btn-danger m-2">
+              Importar 
               <span class="ti-arrow-up"></span>
               <input type="submit" style="display:none" name="upload" @click.prevent="importar">
             </label>
           </form>
-        
+        </div>
+          <paginate 
+            name="ali" 
+            :list="ali" 
+            :per="2" 
+            tag="tbody"
+          >
+          </paginate>
           <card class="card-plain">
-            <div class="table-full-width table-responsive">
-              <table class="table table-hover">
-                <thead class="bg-dark text-white">
+            <div class="table table-responsive-xl">
+              <table class="table table-hover table-dark">
+                <thead class="text-center">
                 <slot>
                   <th>Id</th>
                   <th>Razon Social</th>
@@ -42,12 +65,14 @@
                   <th>Municipio</th>
                   <th>Representante</th>
                   <th>Estado</th>
+                  <th>Creado</th>
+                  <th>Modificado</th>
                   <th>Acción</th>           
                 </slot>
-                </thead class="bg-white">
-                <tbody>
-                <tr v-for="(item, index) in ali" :key="index">
-                  <slot>
+                </thead>
+                <tbody class="table-bordered text-center">    
+                <tr v-for="(item, index) in paginated('ali')" :key="index">
+                  <slot> 
                     <td>{{item.id}}</td>
                     <td>{{item.razon_social}}</td>
                     <td>{{item.establecimientos}}</td>
@@ -57,20 +82,38 @@
                     <td>{{item.municipio.nombre}}</td>
                     <td>{{item.representante.nombre}}</td>
                     <td>{{item.estado}}</td>
-                    <!-- <td>{{item.created_at.split("T")[0]}}</td> -->
+                    <td>{{item.created_at.split("T")[0]}}</td>
+                    <td>{{item.updated_at.split("T")[0]}}</td>
                     <td>
-                      <div >
-                        <span class="ti-pencil mx-3 text-warning" style="cursor: pointer" v-on:click.prevent="editar(item.id)"></span>
-                        <span class="ti-na mx-3 text-danger" style="cursor: pointer" v-on:click.prevent="eliminar(item.id)"></span>
-                        </div>
+                      <div>
+                        <span class="ti-pencil mx-3 text-warning" style="cursor: pointer" v-on:click.prevent="editar(item.id)" v-if="loader2"></span>
+
+                        <span class="ti-na mx-3 text-danger" style="cursor: pointer" v-on:click.prevent="eliminar(item.id)" v-if="loader2"></span>
+                      </div>
+
+                      <div class="spinnera my-auto mx-auto" v-if="loader">
+                      </div>
                     </td>
                   </slot>
-                </tr>
-                </tbody>
+                </tr>            
+                </tbody> 
               </table>
             </div>
-            <!-- <div class="spinner my-auto mx-auto" v-if="loader"></div> -->
           </card>
+          <div class="d-flex justify-content-center mt-4">
+          <paginate-links 
+                  for="ali"
+                  :show-step-links="true"
+                  :async="true"
+                  :limit="5"
+                  :classes="{
+                    ul: 'pagination',
+                    li: 'page-item',
+                    a: 'page-link',
+                  }"
+                >              
+          </paginate-links>
+          </div>
       </div>
   </div>
 </template>
@@ -82,26 +125,43 @@
 
 		data() {
 			return {
+        loader: null,
+        loader2: true,
 				token: localStorage.getItem('user_token'),
 				municipio: localStorage.getItem('ref'),
         data: '',
-				ali: []
+				ali: [],
+        paginate: ['ali'],
+        buscador: '',
+        setTimeoutBuscador: ''
 			}
 		},
 
 		created() {
-			axios.get(`http://127.0.0.1:8000/api/auth/alimento/${this.municipio}`,{
-		      headers:{
-		        'Authorization': `Bearer ${this.token}`
-		      }
-		    }).then((result) => {
-		      this.ali = result.data.alimentoTodo;
-		    }).catch(error => {
-		      console.log(error);
-		    })
+			this.verAlimentos()
 		},
 
 		methods: {
+      verAlimentos() {
+        axios.get(`http://127.0.0.1:8000/api/auth/alimento/${this.municipio}`,{
+            headers:{
+              'Authorization': `Bearer ${this.token}`
+            },
+            params:{
+              buscador: this.buscador
+            }
+          }).then((result) => {
+            this.ali = result.data.alimentoTodo;
+          }).catch(error => {
+            console.log(error);
+        })
+      },
+
+      buscarAlimentos() {
+        clearTimeout( this.setTimeoutBuscador )
+        this.setTimeoutBuscador = setTimeout(this.verAlimentos, 360)
+      },
+
       async crear() {
         this.$router.push('crear-alimentos');
       },
@@ -118,6 +178,9 @@
       async eliminar(id) {
         try 
         {
+          this.loader2 = false
+          this.loader = true
+
           let response = await axios.delete(`http://127.0.0.1:8000/api/auth/alimento/eliminar/${id}`,{
             headers:{
               'Authorization': `Bearer ${this.token}`
@@ -129,10 +192,13 @@
                   title: 'Alimento desactivado con exito!',
                   text: 'El alimento seleccionado fue desactivado con exito!',
             })
+            this.$router.push('/opciones')
           }
         }
         catch (error)
         {
+          this.loader2 = true
+          this.loader = null
           this.$swal({title: 'Ocurrio un error!',text: 'Valide la accion nuevamente!',icon: 'info'})
         }
       },
@@ -152,25 +218,11 @@
           fileLink.setAttribute('download', `Alimentos.xlsx`);
           document.body.appendChild(fileLink);
           fileLink.click();
-          // this.loader = false
           this.$swal({
-            position: 'top-end',
             icon: 'success',
             title: '¡Archivo descargado con exito!',
-            showConfirmButton: false,
-            timer: 2000
           })
         });
-
-        // await axios.get(`http://127.0.0.1:8000/api/auth/alimento/exportar`,{
-        //   headers:{
-        //     'Authorization': `Bearer ${this.token}`
-        //   }
-        // }).then(response => {
-        //   this.$swal({title: 'Ocurrio un error!',text: 'Valide la accion nuevamente!',icon: 'info'})
-        // }).catch(error => {
-        //   console.log(error);
-        // })
       },
 
       importar() {
@@ -203,5 +255,45 @@
 </script>
 
 <style>
-	
+	.atras{
+    margin: 5px; 
+    cursor: pointer; 
+  }
+
+  .atras:hover{
+    transform: scale(1.1);
+    transition: transform .2s;
+  }
+
+  .barra {
+    display: flex;
+    justify-content: center;
+  }
+
+  .spinnera {
+    border: 4px solid grey;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border-left-color: white;
+
+    animation: spin 1s ease infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (max-width: 680px) {
+    .barra{
+      display: grid;
+      justify-content: center;
+    }
+  }
 </style>

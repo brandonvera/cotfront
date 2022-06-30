@@ -27,11 +27,14 @@ import "bootstrap/dist/js/bootstrap";
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
+import VuePaginate from 'vue-paginate';
+
 import PaperDashboard from "./plugins/paperDashboard";
 import "vue-notifyjs/themes/default.css";
 
 Vue.use(VueAxios, axios);
 Vue.use(VueSweetalert2);
+Vue.use(VuePaginate);
 Vue.use(PaperDashboard);
 
 /* eslint-disable no-new */

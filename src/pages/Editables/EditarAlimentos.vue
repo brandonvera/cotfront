@@ -1,9 +1,11 @@
 <template>
 	<div class="row justify-content-center">
     	<div class="col-xl-8 col-lg-7 col-md-6">
-    		<h6> 
-          		Atras <span style="cursor: pointer" class="ti-arrow-left" v-on:click.prevent="atras"></span>
-        	</h6>
+    		<div class="bot">
+				<label v-on:click.prevent="atras" class="atras mb-4">
+	            	Atras <span class="ti-arrow-left"></span>
+	        	</label>
+        	</div>
     		<card class="card" title="Editar Alimento">
           		<div>
           			<form class="form" @submit.stop.prevent="editarAlimento">
@@ -127,7 +129,7 @@
 		                <div class="text-center">
 			                <button class="btn btn-info" type="submit" v-if="loader2">guardar</button>
 			            </div>
-              			<div class="spinner my-auto mx-auto" v-if="loader"></div>
+              			<div class="spinnerc my-auto mx-auto" v-if="loader"></div>
           			</form>
           		</div>
           	</card>
@@ -243,7 +245,7 @@
 		              text: 'Alimento modificado con exito!',
 		        }); 
 		        localStorage.removeItem('alim')
-		        this.$router.push('/municipios')
+		        this.$router.push('/alimentos')
 		      })
 		      .catch(error => {
 		        this.loader = false
@@ -264,7 +266,7 @@
 </script>
 
 <style>
-	.spinner {
+	.spinnerc {
 	  border: 4px solid green;
 	  width: 36px;
 	  height: 36px;
