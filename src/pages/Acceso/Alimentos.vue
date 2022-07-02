@@ -7,7 +7,7 @@
               <input
                   class="form-control mr-sm-2 buscador"
                   type="search"
-                  placeholder="Buscar"
+                  placeholder="Razon Social"
                   aria-label="Search"
                   v-model="buscador"
                   @keyup="buscarAlimentos"
@@ -47,7 +47,7 @@
           <paginate 
             name="ali" 
             :list="ali" 
-            :per="2" 
+            :per="5" 
             tag="tbody"
           >
           </paginate>
@@ -105,7 +105,7 @@
                   for="ali"
                   :show-step-links="true"
                   :async="true"
-                  :limit="5"
+                  :limit="2"
                   :classes="{
                     ul: 'pagination',
                     li: 'page-item',

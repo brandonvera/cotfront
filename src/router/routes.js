@@ -16,6 +16,7 @@ import Login from "@/pages/Login/Login";
 import Municipios from "@/pages/Municipios.vue";
 import Opciones from "@/pages/Opciones.vue";
 
+import Usuarios from "@/pages/Usuarios/Usuarios.vue";
 import Alimentos from "@/pages/Acceso/Alimentos.vue";
 import Hospedajes from "@/pages/Acceso/Hospedajes.vue";
 import Recreaciones from "@/pages/Acceso/Recreaciones.vue";
@@ -23,9 +24,11 @@ import Transportes from "@/pages/Acceso/Transportes.vue";
 import AtractivosCulturales from "@/pages/Acceso/AtractivosCulturales.vue";
 import AtractivosNaturales from "@/pages/Acceso/AtractivosNaturales.vue";
 
+import EditarUsuarios from "@/pages/Usuarios/EditarUsuarios.vue";
 import EditarAlimentos from "@/pages/Editables/EditarAlimentos.vue";
 
 import CrearAlimentos from "@/pages/Creables/CrearAlimentos.vue";
+import CrearUsuarios from "@/pages/Usuarios/CrearUsuario.vue";
 
 const routes = [
   {
@@ -123,6 +126,23 @@ const routes = [
         path: "crear-alimentos",
         name: "Crear Alimento",
         component: CrearAlimentos
+      },
+
+      //USUARIOS
+      {
+        path: "usuarios",
+        name: "Usuarios",
+        component: Usuarios
+      },
+      {
+        path: "editar-usuarios",
+        name: "Editar Usuario",
+        component: EditarUsuarios
+      },
+      {
+        path: "crear-usuarios",
+        name: "Crear Usuario",
+        component: CrearUsuarios
       },
     ]
   },
