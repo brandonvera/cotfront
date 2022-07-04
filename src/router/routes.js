@@ -23,12 +23,27 @@ import Recreaciones from "@/pages/Acceso/Recreaciones.vue";
 import Transportes from "@/pages/Acceso/Transportes.vue";
 import AtractivosCulturales from "@/pages/Acceso/AtractivosCulturales.vue";
 import AtractivosNaturales from "@/pages/Acceso/AtractivosNaturales.vue";
+import Representantes from "@/pages/Acceso/Representantes.vue";
 
 import EditarUsuarios from "@/pages/Usuarios/EditarUsuarios.vue";
 import EditarAlimentos from "@/pages/Editables/EditarAlimentos.vue";
+import EditarHospedajes from "@/pages/Editables/EditarHospedajes.vue";
+import EditarRecreaciones from "@/pages/Editables/EditarRecreaciones.vue";
+import EditarTransportes from "@/pages/Editables/EditarTransportes.vue";
+import EditarCulturales from "@/pages/Editables/EditarCulturales.vue";
+import EditarNaturales from "@/pages/Editables/EditarNaturales.vue";
+import EditarRepresentantes from "@/pages/Editables/EditarRepresentantes.vue";
 
-import CrearAlimentos from "@/pages/Creables/CrearAlimentos.vue";
 import CrearUsuarios from "@/pages/Usuarios/CrearUsuario.vue";
+import CrearAlimentos from "@/pages/Creables/CrearAlimentos.vue";
+import CrearHospedajes from "@/pages/Creables/CrearHospedajes.vue";
+import CrearRecreaciones from "@/pages/Creables/CrearRecreaciones.vue";
+import CrearTransportes from "@/pages/Creables/CrearTransportes.vue";
+import CrearCulturales from "@/pages/Creables/CrearCulturales.vue";
+import CrearNaturales from "@/pages/Creables/CrearNaturales.vue";
+import CrearRepresentantes from "@/pages/Creables/CrearRepresentantes.vue";
+
+import Guard from "@/services/Auth";
 
 const routes = [
   {
@@ -71,6 +86,7 @@ const routes = [
         name: "table-list",
         component: TableList
       },
+
       //MUNICIPIOS Y OPCIONES 
       {
         path: "municipios",
@@ -82,7 +98,13 @@ const routes = [
         name: "Opciones",
         component: Opciones
       },
+
       //VISTAS DE LAS OPCIONES
+      {
+        path: "representantes",
+        name: "Representantes",
+        component: Representantes
+      },
       {
         path: "alimentos",
         name: "Alimentos",
@@ -120,12 +142,72 @@ const routes = [
         name: "Editar Alimento",
         component: EditarAlimentos
       },
+      {
+        path: "editar-hospedajes",
+        name: "Editar Hospedaje",
+        component: EditarHospedajes
+      },
+      {
+        path: "editar-recreaciones",
+        name: "Editar Recreacion",
+        component: EditarRecreaciones
+      },
+      {
+        path: "editar-transportes",
+        name: "Editar Transporte",
+        component: EditarTransportes
+      },
+      {
+        path: "editar-culturales",
+        name: "Editar Atractivo Cultural",
+        component: EditarCulturales
+      },
+      {
+        path: "editar-naturales",
+        name: "Editar Atractivo Natural",
+        component: EditarNaturales
+      },
+      {
+        path: "editar-representantes",
+        name: "Editar Representante",
+        component: EditarRepresentantes
+      },
 
       //CREABLES
       {
         path: "crear-alimentos",
         name: "Crear Alimento",
         component: CrearAlimentos
+      },
+      {
+        path: "crear-hospedajes",
+        name: "Crear Hospedaje",
+        component: CrearHospedajes
+      },
+      {
+        path: "crear-recreaciones",
+        name: "Crear Recreacion",
+        component: CrearRecreaciones
+      },
+      {
+        path: "crear-transportes",
+        name: "Crear Transporte",
+        component: CrearTransportes
+      },
+      {
+        path: "crear-culturales",
+        name: "Crear Atractivo Cultural",
+        component: CrearCulturales
+      },
+      {
+        path: "crear-naturales",
+        name: "Crear Atractivo Natural",
+        component: CrearNaturales
+      },
+      {
+        path: "crear-representantes",
+        name: "Crear Representante",
+        component: CrearRepresentantes
       },
 
       //USUARIOS
@@ -144,7 +226,8 @@ const routes = [
         name: "Crear Usuario",
         component: CrearUsuarios
       },
-    ]
+    ],
+    beforeEnter: Guard.auth
   },
   { path: "*", component: NotFound },
   { path: "/inicio", name: "Login", component: Login },

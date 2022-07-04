@@ -6,9 +6,9 @@
 	            	Atras <span class="ti-arrow-left"></span>
 	        	</label>
         	</div>
-    		<card class="card" title="Editar Alimento">
+    		<card class="card" title="Editar Hospedaje">
           		<div>
-          			<form class="form" @submit.stop.prevent="editarAlimento">
+          			<form class="form" @submit.stop.prevent="editarHospedaje">
 
 
           				<div class="row">
@@ -16,7 +16,7 @@
 		                    <fg-input type="text"
 		                              label="Razon Social"
 		                              placeholder="Razon Social"
-		                              v-model="alimentos.razon_social"
+		                              v-model="hospedajes.razon_social"
 		                              id="inputNombre">
 		                    </fg-input>
 		                  </div>
@@ -27,7 +27,7 @@
 		                    <fg-input type="text"
 		                              label="Establecimientos"
 		                              placeholder="Establecimientos"
-		                              v-model="alimentos.establecimientos"
+		                              v-model="hospedajes.establecimientos"
 		                              id="inputEstado"
 		                              onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
 		                    </fg-input>
@@ -39,7 +39,7 @@
 		                    <fg-input type="text"
 		                              label="Telefono"
 		                              placeholder="Telefono"
-		                              v-model="alimentos.telefono"
+		                              v-model="hospedajes.telefono"
 		                              id="inputEstado"
 		                              onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
 		                    </fg-input>
@@ -51,7 +51,7 @@
 		                    <fg-input type="email"
 		                              label="Correo"
 		                              placeholder="Correo"
-		                              v-model="alimentos.correo"
+		                              v-model="hospedajes.correo"
 		                              id="inputNombre">
 		                    </fg-input>
 		                  </div>
@@ -66,7 +66,7 @@
 		                      class="form-control"
 		                      cols="30"
 		                      rows="1"
-		                      v-model="alimentos.direccion_principal"
+		                      v-model="hospedajes.direccion_principal"
 		                      placeholder="Dirección Principal"
 		                    >
 		                    </textarea>
@@ -80,7 +80,7 @@
 		                      name="Estado"
 		                      id="Estado"
 		                      class="form-control"
-		                      v-model="alimentos.estado"
+		                      v-model="hospedajes.estado"
 		                    >
 		                      <option disabled value="">Seleccione algun Estado</option>
 		                      <option value="ACTIVO">Activo</option>
@@ -97,7 +97,7 @@
 		                        id="Municipio"
 		                        class="form-control"
 		                        required
-		                        v-model="alimentos.id_municipio"
+		                        v-model="hospedajes.id_municipio"
 		                    >
 		                        <option disabled value="">
 		                        {{municipioActual}}</option>
@@ -116,7 +116,7 @@
 		                        id="Representante"
 		                        class="form-control"
 		                        required
-		                        v-model="alimentos.id_representantes"
+		                        v-model="hospedajes.id_representantes"
 		                    >
 		                        <option disabled value="">
 		                        {{representanteActual}}</option>
@@ -145,13 +145,13 @@
 		data() {
 			return {
 				token: localStorage.getItem('user_token'),
-				alim_id: localStorage.getItem('alim'),
+				hos_id: localStorage.getItem('hos'),
 				municipio: localStorage.getItem('ref'),
 				municipioActual: null,
 				representanteActual: null,
 				muni: [],
 				repre: [],
-				alimentos: {
+				hospedajes: {
 					razon_social: '',
 					establecimientos: '',
 					telefono: '',
@@ -167,7 +167,7 @@
 		},
 
 		mounted() {
-			this.MostrarAlimento()
+			this.MostrarHospedaje()
 			this.Municipios()
 			this.Representantes()
 		},
@@ -191,8 +191,8 @@
 		      this.repre = response.data.representante
 		    },
 
-		    async MostrarAlimento() {
-		      await this.axios.get(`http://127.0.0.1:8000/api/auth/alimento/ver/${this.alim_id}`,{
+		    async MostrarHospedaje() {
+		      await this.axios.get(`http://127.0.0.1:8000/api/auth/hospedaje/ver/${this.hos_id}`,{
 		        headers:{
 		          "Authorization": `Bearer ${this.token}`
 		        }
@@ -207,18 +207,18 @@
 		        	estado,
 		        	id_municipio,
 		        	id_representantes
-		        } = response.data.alimento
+		        } = response.data.hospedaje
 
-		        this.alimentos.razon_social = razon_social
-		        this.alimentos.establecimientos = establecimientos
-		        this.alimentos.telefono = telefono
-		        this.alimentos.correo = correo
-		        this.alimentos.direccion_principal = direccion_principal
-		        this.alimentos.estado = estado
-		        this.alimentos.id_municipio = id_municipio
-		        this.alimentos.id_representantes = id_representantes
-		        this.municipioActual = response.data.alimento.municipio.nombre
-		        this.representanteActual = response.data.alimento.representante.nombre
+		        this.hospedajes.razon_social = razon_social
+		        this.hospedajes.establecimientos = establecimientos
+		        this.hospedajes.telefono = telefono
+		        this.hospedajes.correo = correo
+		        this.hospedajes.direccion_principal = direccion_principal
+		        this.hospedajes.estado = estado
+		        this.hospedajes.id_municipio = id_municipio
+		        this.hospedajes.id_representantes = id_representantes
+		        this.municipioActual = response.data.hospedaje.municipio.nombre
+		        this.representanteActual = response.data.hospedaje.representante.nombre
 
 		      })
 		      .catch(error => {
@@ -226,11 +226,11 @@
 		      })
 		    },
 
-		    async editarAlimento() {
+		    async editarHospedaje() {
 		      this.loader = true
 		      this.loader2 = false
 		      
-		      await this.axios.put(`http://127.0.0.1:8000/api/auth/alimento/modificar/${this.alim_id}`,this.alimentos,
+		      await this.axios.put(`http://127.0.0.1:8000/api/auth/hospedaje/modificar/${this.hos_id}`,this.hospedajes,
 		      {
 		        headers:{
 		          "Authorization": `Bearer ${this.token}`
@@ -242,10 +242,10 @@
 		        this.$swal({
 		              icon: 'success',
 		              title: 'Modificacion exitosa!',
-		              text: 'Alimento modificado con exito!',
+		              text: 'Hospedaje modificado con exito!',
 		        }); 
-		        localStorage.removeItem('alim')
-		        this.$router.push('/alimentos')
+		        localStorage.removeItem('hos')
+		        this.$router.push('/hospedajes')
 		      })
 		      .catch(error => {
 		        this.loader = false
@@ -259,8 +259,8 @@
     		},
 
     		atras(){
-    			localStorage.removeItem('alim')
-    			this.$router.push('/alimentos')
+    			localStorage.removeItem('hos')
+    			this.$router.push('/hospedajes')
     		}
 		}
 	}

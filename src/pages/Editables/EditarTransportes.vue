@@ -6,9 +6,9 @@
 	            	Atras <span class="ti-arrow-left"></span>
 	        	</label>
         	</div>
-    		<card class="card" title="Editar Alimento">
+    		<card class="card" title="Editar Transporte">
           		<div>
-          			<form class="form" @submit.stop.prevent="editarAlimento">
+          			<form class="form" @submit.stop.prevent="editarTransporte">
 
 
           				<div class="row">
@@ -16,7 +16,7 @@
 		                    <fg-input type="text"
 		                              label="Razon Social"
 		                              placeholder="Razon Social"
-		                              v-model="alimentos.razon_social"
+		                              v-model="transportes.razon_social"
 		                              id="inputNombre">
 		                    </fg-input>
 		                  </div>
@@ -27,7 +27,7 @@
 		                    <fg-input type="text"
 		                              label="Establecimientos"
 		                              placeholder="Establecimientos"
-		                              v-model="alimentos.establecimientos"
+		                              v-model="transportes.establecimientos"
 		                              id="inputEstado"
 		                              onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
 		                    </fg-input>
@@ -39,7 +39,7 @@
 		                    <fg-input type="text"
 		                              label="Telefono"
 		                              placeholder="Telefono"
-		                              v-model="alimentos.telefono"
+		                              v-model="transportes.telefono"
 		                              id="inputEstado"
 		                              onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
 		                    </fg-input>
@@ -51,7 +51,7 @@
 		                    <fg-input type="email"
 		                              label="Correo"
 		                              placeholder="Correo"
-		                              v-model="alimentos.correo"
+		                              v-model="transportes.correo"
 		                              id="inputNombre">
 		                    </fg-input>
 		                  </div>
@@ -66,7 +66,7 @@
 		                      class="form-control"
 		                      cols="30"
 		                      rows="1"
-		                      v-model="alimentos.direccion_principal"
+		                      v-model="transportes.direccion_principal"
 		                      placeholder="Dirección Principal"
 		                    >
 		                    </textarea>
@@ -80,7 +80,7 @@
 		                      name="Estado"
 		                      id="Estado"
 		                      class="form-control"
-		                      v-model="alimentos.estado"
+		                      v-model="transportes.estado"
 		                    >
 		                      <option disabled value="">Seleccione algun Estado</option>
 		                      <option value="ACTIVO">Activo</option>
@@ -97,7 +97,7 @@
 		                        id="Municipio"
 		                        class="form-control"
 		                        required
-		                        v-model="alimentos.id_municipio"
+		                        v-model="transportes.id_municipio"
 		                    >
 		                        <option disabled value="">
 		                        {{municipioActual}}</option>
@@ -116,7 +116,7 @@
 		                        id="Representante"
 		                        class="form-control"
 		                        required
-		                        v-model="alimentos.id_representantes"
+		                        v-model="transportes.id_representantes"
 		                    >
 		                        <option disabled value="">
 		                        {{representanteActual}}</option>
@@ -140,18 +140,18 @@
 <script>
 	import axios from 'axios'
 	export default {
-		name: 'EditarAlimentos',
+		name: 'EditarTransportes',
 
 		data() {
 			return {
 				token: localStorage.getItem('user_token'),
-				alim_id: localStorage.getItem('alim'),
+				tra_id: localStorage.getItem('tra'),
 				municipio: localStorage.getItem('ref'),
 				municipioActual: null,
 				representanteActual: null,
 				muni: [],
 				repre: [],
-				alimentos: {
+				transportes: {
 					razon_social: '',
 					establecimientos: '',
 					telefono: '',
@@ -167,7 +167,7 @@
 		},
 
 		mounted() {
-			this.MostrarAlimento()
+			this.MostrarTransporte()
 			this.Municipios()
 			this.Representantes()
 		},
@@ -191,8 +191,8 @@
 		      this.repre = response.data.representante
 		    },
 
-		    async MostrarAlimento() {
-		      await this.axios.get(`http://127.0.0.1:8000/api/auth/alimento/ver/${this.alim_id}`,{
+		    async MostrarTransporte() {
+		      await this.axios.get(`http://127.0.0.1:8000/api/auth/transporte/ver/${this.tra_id}`,{
 		        headers:{
 		          "Authorization": `Bearer ${this.token}`
 		        }
@@ -207,18 +207,18 @@
 		        	estado,
 		        	id_municipio,
 		        	id_representantes
-		        } = response.data.alimento
+		        } = response.data.transporte
 
-		        this.alimentos.razon_social = razon_social
-		        this.alimentos.establecimientos = establecimientos
-		        this.alimentos.telefono = telefono
-		        this.alimentos.correo = correo
-		        this.alimentos.direccion_principal = direccion_principal
-		        this.alimentos.estado = estado
-		        this.alimentos.id_municipio = id_municipio
-		        this.alimentos.id_representantes = id_representantes
-		        this.municipioActual = response.data.alimento.municipio.nombre
-		        this.representanteActual = response.data.alimento.representante.nombre
+		        this.transportes.razon_social = razon_social
+		        this.transportes.establecimientos = establecimientos
+		        this.transportes.telefono = telefono
+		        this.transportes.correo = correo
+		        this.transportes.direccion_principal = direccion_principal
+		        this.transportes.estado = estado
+		        this.transportes.id_municipio = id_municipio
+		        this.transportes.id_representantes = id_representantes
+		        this.municipioActual = response.data.transporte.municipio.nombre
+		        this.representanteActual = response.data.transporte.representante.nombre
 
 		      })
 		      .catch(error => {
@@ -226,11 +226,11 @@
 		      })
 		    },
 
-		    async editarAlimento() {
+		    async editarTransporte() {
 		      this.loader = true
 		      this.loader2 = false
 		      
-		      await this.axios.put(`http://127.0.0.1:8000/api/auth/alimento/modificar/${this.alim_id}`,this.alimentos,
+		      await this.axios.put(`http://127.0.0.1:8000/api/auth/transporte/modificar/${this.tra_id}`,this.transportes,
 		      {
 		        headers:{
 		          "Authorization": `Bearer ${this.token}`
@@ -242,10 +242,10 @@
 		        this.$swal({
 		              icon: 'success',
 		              title: 'Modificacion exitosa!',
-		              text: 'Alimento modificado con exito!',
+		              text: 'Transporte modificado con exito!',
 		        }); 
-		        localStorage.removeItem('alim')
-		        this.$router.push('/alimentos')
+		        localStorage.removeItem('tra')
+		        this.$router.push('/transportes')
 		      })
 		      .catch(error => {
 		        this.loader = false
@@ -259,8 +259,8 @@
     		},
 
     		atras(){
-    			localStorage.removeItem('alim')
-    			this.$router.push('/alimentos')
+    			localStorage.removeItem('tra')
+    			this.$router.push('/transportes')
     		}
 		}
 	}

@@ -10,7 +10,7 @@
                   placeholder="Nombre"
                   aria-label="Search"
                   v-model="buscador"
-                  @keyup="buscarCulturales"
+                  @keyup="buscarRepresentantes"
               >
           </form>
         </div>
@@ -45,8 +45,8 @@
           </form>
         </div>
           <paginate 
-            name="cult" 
-            :list="cult" 
+            name="repre" 
+            :list="repre" 
             :per="5" 
             tag="tbody"
           >
@@ -58,22 +58,28 @@
                 <slot>
                   <th>Id</th>
                   <th>Nombre</th>
-                  <th>Dirección</th>
+                  <th>Apellido</th>
+                  <th>Cargo</th>
+                  <th>Telefono</th>
+                  <th>Correo</th>
+                  <th>Direccion</th>
                   <th>Estado</th>
-                  <th>Municipio</th>        
                   <th>Creado</th>
                   <th>Modificado</th>
                   <th>Acción</th>           
                 </slot>
                 </thead>
                 <tbody class="table-bordered text-center">    
-                <tr v-for="(item, index) in paginated('cult')" :key="index">
+                <tr v-for="(item, index) in paginated('repre')" :key="index">
                   <slot> 
                     <td>{{item.id}}</td>
                     <td>{{item.nombre}}</td>
+                    <td>{{item.apellido}}</td>
+                    <td>{{item.cargo}}</td>
+                    <td>{{item.telefono}}</td>
+                    <td>{{item.correo}}</td>
                     <td>{{item.direccion}}</td>
                     <td>{{item.estado}}</td>
-                    <td>{{item.municipio.nombre}}</td>     
                     <td>{{item.created_at.split("T")[0]}}</td>
                     <td>{{item.updated_at.split("T")[0]}}</td>
                     <td>
@@ -94,7 +100,7 @@
           </card>
           <div class="d-flex justify-content-center mt-4">
           <paginate-links 
-                  for="cult"
+                  for="repre"
                   :show-step-links="true"
                   :async="true"
                   :limit="2"
@@ -113,7 +119,7 @@
 <script>
 	import axios from 'axios'
 	export default {
-		name: 'Culturales',
+		name: 'Representantes',
 
 		data() {
 			return {
@@ -122,20 +128,20 @@
 				token: localStorage.getItem('user_token'),
 				municipio: localStorage.getItem('ref'),
         data: '',
-				cult: [],
-        paginate: ['cult'],
+				repre: [],
+        paginate: ['repre'],
         buscador: '',
         setTimeoutBuscador: ''
 			}
 		},
 
 		created() {
-			this.verCulturales()
+			this.verRepresentantes()
 		},
 
 		methods: {
-      verCulturales() {
-        axios.get(`http://127.0.0.1:8000/api/auth/cultural/${this.municipio}`,{
+      verRepresentantes() {
+        axios.get(`http://127.0.0.1:8000/api/auth/representante`,{
             headers:{
               'Authorization': `Bearer ${this.token}`
             },
@@ -143,28 +149,28 @@
               buscador: this.buscador
             }
           }).then((result) => {
-            this.cult = result.data.culturalTodo;
+            this.repre = result.data.representante;
           }).catch(error => {
             console.log(error);
         })
       },
 
-      buscarCulturales() {
+      buscarRepresentantes() {
         clearTimeout( this.setTimeoutBuscador )
-        this.setTimeoutBuscador = setTimeout(this.verCulturales, 360)
+        this.setTimeoutBuscador = setTimeout(this.verRepresentantes, 360)
       },
 
       async crear() {
-        this.$router.push('crear-culturales');
+        this.$router.push('crear-representantes');
       },
 
       atras() {
-        this.$router.push('/opciones');
+        this.$router.push('/municipios');
       },
 
       async editar(id) {
-        localStorage.setItem("cul", id);
-        this.$router.push('editar-culturales');
+        localStorage.setItem("rep", id);
+        this.$router.push('editar-representantes');
       },
 
       async eliminar(id) {
@@ -173,7 +179,7 @@
           this.loader2 = false
           this.loader = true
 
-          let response = await axios.delete(`http://127.0.0.1:8000/api/auth/cultural/eliminar/${id}`,{
+          let response = await axios.delete(`http://127.0.0.1:8000/api/auth/representante/eliminar/${id}`,{
             headers:{
               'Authorization': `Bearer ${this.token}`
             }
@@ -181,10 +187,10 @@
           if (response.status == 200) {
             this.$swal({
                   icon: 'success',
-                  title: 'Atractivo Cultural desactivado con exito!',
-                  text: 'El atractivo cultural seleccionado fue desactivado con exito!',
+                  title: 'Representante desactivado con exito!',
+                  text: 'El representante seleccionado fue desactivado con exito!',
             })
-            this.$router.push('/opciones')
+            this.$router.push('/municipios')
           }
         }
         catch (error)
@@ -198,7 +204,7 @@
       async exportar() {
 
         axios({
-          url: `http://127.0.0.1:8000/api/auth/cultural/exportar`,
+          url: `http://127.0.0.1:8000/api/auth/representante/exportar`,
           method: 'GET',
           headers:{"Authorization": `Bearer ${this.token}`},
           responseType: 'blob',
@@ -207,7 +213,7 @@
           var fileURL = window.URL.createObjectURL(new Blob([response.data]));
           var fileLink = document.createElement('a');
           fileLink.href = fileURL;
-          fileLink.setAttribute('download', `AtractivosCulturales.xlsx`);
+          fileLink.setAttribute('download', `Representantes.xlsx`);
           document.body.appendChild(fileLink);
           fileLink.click();
           this.$swal({
@@ -221,7 +227,7 @@
         var $mainForm = ('#mainForm')
         var data = new FormData(mainForm)
 
-        axios.post(`http://127.0.0.1:8000/api/auth/cultural/importar`, data, {
+        axios.post(`http://127.0.0.1:8000/api/auth/representante/importar`, data, {
             headers:{
               'Authorization': `Bearer ${this.token}`
             }
@@ -229,8 +235,8 @@
         .then((response) => {
           this.$swal({
             icon: 'success',
-            title: 'Atractivo Cultural importado con exito!',
-            text: 'El atractivo cultural seleccionado fue importado con exito!',
+            title: 'Representante importado con exito!',
+            text: 'El representante seleccionado fue importado con exito!',
           })
         })
         .catch((error) => {
