@@ -57,8 +57,8 @@
                 <thead class="text-center">
                 <slot>
                   <th>Id</th>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
+                  <th>Persona</th>
+                  
                   <th>Cargo</th>
                   <th>Telefono</th>
                   <th>Correo</th>
@@ -73,8 +73,8 @@
                 <tr v-for="(item, index) in paginated('repre')" :key="index">
                   <slot> 
                     <td>{{item.id}}</td>
-                    <td>{{item.nombre}}</td>
-                    <td>{{item.apellido}}</td>
+                    <td>{{item.persona}}</td>
+                    
                     <td>{{item.cargo}}</td>
                     <td>{{item.telefono}}</td>
                     <td>{{item.correo}}</td>

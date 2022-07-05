@@ -80,7 +80,7 @@
                     <td>{{item.correo}}</td>
                     <td>{{item.direccion_principal}}</td>
                     <td>{{item.municipio.nombre}}</td>
-                    <td>{{item.representante.nombre}}</td>
+                    <td>{{item.representante.persona}}</td>
                     <td>{{item.estado}}</td>
                     <td>{{item.created_at.split("T")[0]}}</td>
                     <td>{{item.updated_at.split("T")[0]}}</td>

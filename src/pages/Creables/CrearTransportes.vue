@@ -120,7 +120,7 @@
 		                        <option disabled value="">
 		                        </option>
 		                        <option v-for="r in repre" :key="r.id" v-bind:value="r.id">{{
-		                          r.nombre
+		                          r.persona
 		                        }}</option>
 		                    </select>
 		                  </div>

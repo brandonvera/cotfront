@@ -49,7 +49,7 @@ const routes = [
   {
     path: "/",
     component: DashboardLayout,
-    redirect: "/dashboard",
+    redirect: "/municipios",
     children: [
       {
         path: "dashboard",

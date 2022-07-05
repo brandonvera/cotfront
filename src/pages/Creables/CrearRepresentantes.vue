@@ -13,15 +13,15 @@
           				<div class="row">
 		                  <div class="col-md-12">
 		                    <fg-input type="text"
-		                              label="Nombre"
-		                              placeholder="Nombre"
-		                              v-model="representantes.nombre"
+		                              label="Persona"
+		                              placeholder="Persona"
+		                              v-model="representantes.persona"
 		                              id="inputNombre">
 		                    </fg-input>
 		                  </div>
 		                </div>
 
-		                <div class="row">
+		                <!-- <div class="row">
 		                  <div class="col-md-12">
 		                    <fg-input type="text"
 		                              label="Apellido"
@@ -30,7 +30,7 @@
 		                              id="inputNombre">
 		                    </fg-input>
 		                  </div>
-		                </div>
+		                </div> -->
 
 		                <div class="row">
 		                  <div class="col-md-12">
@@ -122,8 +122,7 @@
 				muni: [],
 				repre: [],
 				representantes: {
-					nombre: '',
-					apellido: '',
+					persona: '',			
 					cargo: '',
 					telefono: '',
 					correo: '',
@@ -152,8 +151,7 @@
       			.then(response => {
       				this.loader = false
 			        this.loader2 = true
-			        this.representantes.nombre = ''
-			        this.representantes.apellido = ''
+			        this.representantes.persona = ''
 			        this.representantes.cargo = ''
 			        this.representantes.telefono = ''
 			        this.representantes.correo = ''

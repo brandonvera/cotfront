@@ -13,15 +13,15 @@
           				<div class="row">
 		                  <div class="col-md-12">
 		                    <fg-input type="text"
-		                              label="Nombre"
-		                              placeholder="Nombre"
-		                              v-model="representantes.nombre"
+		                              label="Persona"
+		                              placeholder="Persona"
+		                              v-model="representantes.persona"
 		                              id="inputNombre">
 		                    </fg-input>
 		                  </div>
 		                </div>
 
-		                <div class="row">
+		                <!-- <div class="row">
 		                  <div class="col-md-12">
 		                    <fg-input type="text"
 		                              label="Apellido"
@@ -30,7 +30,7 @@
 		                              id="inputNombre">
 		                    </fg-input>
 		                  </div>
-		                </div>
+		                </div> -->
 
 		                <div class="row">
 		                  <div class="col-md-12">
@@ -122,8 +122,7 @@
 				rep_id: localStorage.getItem('rep'),
 				municipio: localStorage.getItem('ref'),
 				representantes: {
-					nombre: '',
-					apellido: '',
+					persona: '',
 					cargo: '',
 					telefono: '',
 					correo: '',
@@ -148,8 +147,7 @@
 		      })
 		      .then(response => {
 		        const {
-		        	nombre,
-		        	apellido,
+		        	persona,
 		        	cargo,
 		        	telefono,
 		        	correo,
@@ -157,8 +155,7 @@
 		        	estado,
 		        } = response.data.representante
 
-		        this.representantes.nombre = nombre
-		        this.representantes.apellido = apellido
+		        this.representantes.persona = persona
 		        this.representantes.cargo = cargo
 		        this.representantes.telefono = telefono
 		        this.representantes.correo = correo		        
