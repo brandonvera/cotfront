@@ -6,4 +6,12 @@ export default {
 		}
 		next();
 	},
+
+	rolI(to, from, next) {
+		const rol = localStorage.getItem('rol');
+		if(rol == "2"){
+			next('/municipios');
+		} 
+		next();
+	},
 }

@@ -20,18 +20,18 @@
             Atras <span class="ti-arrow-left"></span>
           </label>
           
-          <label class="btn btn-success m-2"  v-on:click.prevent="crear">
+          <label class="btn btn-success m-2"  v-on:click.prevent="crear" v-if="rol == 1">
               Crear
               <span style="cursor: pointer" class="ti-plus"></span>
           </label>
           
-          <label class="btn btn-info m-2">
+          <label class="btn btn-info m-2" v-if="rol == 1">
               Exportar 
               <span class="ti-arrow-down"></span>
               <input style="display:none" v-on:click.prevent="exportar">
           </label>
           
-          <form id="mainForm">
+          <form id="mainForm" v-if="rol == 1">
             <label class="btn btn-dark m-2">
               Seleccionar
               <span class="ti-exchange-vertical"></span>
@@ -63,7 +63,7 @@
                   <th>Municipio</th>        
                   <th>Creado</th>
                   <th>Modificado</th>
-                  <th>Acción</th>           
+                  <th v-if="rol == 1">Acción</th>           
                 </slot>
                 </thead>
                 <tbody class="table-bordered text-center">    
@@ -76,7 +76,7 @@
                     <td>{{item.municipio.nombre}}</td>     
                     <td>{{item.created_at.split("T")[0]}}</td>
                     <td>{{item.updated_at.split("T")[0]}}</td>
-                    <td>
+                    <td v-if="rol == 1">
                       <div>
                         <span class="ti-pencil mx-3 text-warning" style="cursor: pointer" v-on:click.prevent="editar(item.id)" v-if="loader2"></span>
 
@@ -120,6 +120,7 @@
         loader: null,
         loader2: true,
 				token: localStorage.getItem('user_token'),
+        rol: localStorage.getItem('rol'),
 				municipio: localStorage.getItem('ref'),
         data: '',
 				natu: [],
@@ -143,7 +144,11 @@
               buscador: this.buscador
             }
           }).then((result) => {
-            this.natu = result.data.naturalTodo;
+            if(this.rol == 1) {
+              this.natu = result.data.naturalTodo; 
+            } else {
+              this.natu = result.data.natural;
+            }
           }).catch(error => {
             console.log(error);
         })

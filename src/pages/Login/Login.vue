@@ -68,8 +68,40 @@
 
        			await this.axios.post(`http://127.0.0.1:8000/api/auth/login`, this.login)
        			.then(response => {
+       				localStorage.setItem('rol', response.data.usuario.id_tipo);
        				localStorage.setItem('user_token', response.data.token.original.access_token);
-       				this.$router.push('/dashboard');
+
+       				if(response.data.usuario.estado == 'ACTIVO')
+       				{
+       					this.$router.push('/municipios');
+       				} 
+       				else if(response.data.usuario.estado == 'INACTIVO') 
+       				{
+       					localStorage.removeItem('rol')
+       					localStorage.removeItem('user_token')
+
+       					this.$swal({
+                			icon: 'info',
+                			title: 'Oops...',
+                			text: 'Tu usuario posee un Estado INACTIVO! para continuar comunicate con el administrador para reactivar tu usuario',
+                		})
+                		this.loader = false
+                		this.loader2 = true
+       				} 
+       				else 
+       				{
+       					localStorage.removeItem('rol')
+       					localStorage.removeItem('user_token')
+       					
+       					this.$swal({
+                			icon: 'error',
+                			title: 'Oops...',
+                			text: 'Tu usuario posee un Estado fuera de los permitidos! Contacta con el administrador para resolver tu caso de Actividad',
+                		})
+                		this.loader = false
+                		this.loader2 = true
+       				}
+
        			})
        			.catch(error => {
 		            this.loader = false

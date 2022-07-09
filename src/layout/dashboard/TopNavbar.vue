@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <nav class="navbar navbar-expand-lg tam">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">{{routeName}}</a>
       <button class="navbar-toggler navbar-burger"
@@ -22,15 +22,6 @@
                 </p>
               </button>
             </form>
-          </li>
-
-          <li class="nav-item">
-            <router-link to="/dashboard" class="nav-link">
-              <i class="ti-settings"></i>
-              <p>
-                Perfil
-              </p>
-            </router-link>
           </li>
         </ul>
       </div>
@@ -66,37 +57,46 @@ export default {
     hideSidebar() {
       this.$sidebar.displaySidebar(false);
     },
-    logout()
+    
+    async logout()
     {  
-      localStorage.removeItem('user_token');
-      localStorage.removeItem('alim');
-      localStorage.removeItem('ref');
-      this.$swal( 
-        'Cierre de Sesión Exitoso!'
-      );
-      this.$router.push("/inicio");
 
-      // await this.axios.post(`http://127.0.0.1:8000/api/auth/logout`, {
-      //   headers:{
-      //     'Authorization': `Bearer ${this.token}`
-      //   } 
-      // })
-      // .then(response => {
-      //   this.$swal( 
-      //     'Cierre de Sesión Exitoso!'
-      //   );
-      //   this.$router.push("/inicio");
-      // })
-      // .catch(error => {
-      //   localStorage.removeItem('user_token');
-      //   this.$swal( 
-      //     'Cierre de Sesión!'
-      //   );
-      //   this.$router.push("/inicio");
-      // })
+      try {
+
+        let response = await this.axios.post(`http://127.0.0.1:8000/api/auth/logout`, {
+          headers:{
+            'Authorization': `Bearer ${this.token}`
+          } 
+        })
+        if (response.status == 200) {
+          this.$swal({
+            icon: 'success',
+            text: 'Cierre de Sesión Exitoso!',
+          })
+          this.$router.push('/inicio')
+        }
+
+      } catch (error) {
+
+          localStorage.removeItem('user_token');
+          localStorage.removeItem('ref');
+          localStorage.removeItem('rol');
+
+          this.$swal({
+            icon: 'success',
+            text: 'Cierre de Sesión Exitoso!',
+          })
+          this.$router.push('/inicio')
+
+      }
     }
   }
 };
 </script>
 <style>
+
+  .tam {
+    height: 99px;
+  }
+
 </style>

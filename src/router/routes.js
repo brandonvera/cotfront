@@ -3,13 +3,13 @@ import DashboardLayout from "@/layout/dashboard/DashboardLayout.vue";
 import NotFound from "@/pages/NotFoundPage.vue";
 
 // Admin pages
-import Dashboard from "@/pages/Dashboard.vue";
-import UserProfile from "@/pages/UserProfile.vue";
-import Notifications from "@/pages/Notifications.vue";
-import Icons from "@/pages/Icons.vue";
-import Maps from "@/pages/Maps.vue";
-import Typography from "@/pages/Typography.vue";
-import TableList from "@/pages/TableList.vue";
+// import Dashboard from "@/pages/Dashboard.vue";
+// import UserProfile from "@/pages/UserProfile.vue";
+// import Notifications from "@/pages/Notifications.vue";
+// import Icons from "@/pages/Icons.vue";
+// import Maps from "@/pages/Maps.vue";
+// import Typography from "@/pages/Typography.vue";
+// import TableList from "@/pages/TableList.vue";
 
 import Login from "@/pages/Login/Login";
 
@@ -51,41 +51,41 @@ const routes = [
     component: DashboardLayout,
     redirect: "/municipios",
     children: [
-      {
-        path: "dashboard",
-        name: "dashboard",
-        component: Dashboard
-      },
-      {
-        path: "stats",
-        name: "stats",
-        component: UserProfile
-      },
-      {
-        path: "notifications",
-        name: "notifications",
-        component: Notifications
-      },
-      {
-        path: "icons",
-        name: "icons",
-        component: Icons
-      },
-      {
-        path: "maps",
-        name: "maps",
-        component: Maps
-      },
-      {
-        path: "typography",
-        name: "typography",
-        component: Typography
-      },
-      {
-        path: "table-list",
-        name: "table-list",
-        component: TableList
-      },
+      // {
+      //   path: "dashboard",
+      //   name: "dashboard",
+      //   component: Dashboard
+      // },
+      // {
+      //   path: "stats",
+      //   name: "stats",
+      //   component: UserProfile
+      // },
+      // {
+      //   path: "notifications",
+      //   name: "notifications",
+      //   component: Notifications
+      // },
+      // {
+      //   path: "icons",
+      //   name: "icons",
+      //   component: Icons
+      // },
+      // {
+      //   path: "maps",
+      //   name: "maps",
+      //   component: Maps
+      // },
+      // {
+      //   path: "typography",
+      //   name: "typography",
+      //   component: Typography
+      // },
+      // {
+      //   path: "table-list",
+      //   name: "table-list",
+      //   component: TableList
+      // },
 
       //MUNICIPIOS Y OPCIONES 
       {
@@ -103,7 +103,8 @@ const routes = [
       {
         path: "representantes",
         name: "Representantes",
-        component: Representantes
+        component: Representantes,
+        beforeEnter: Guard.rolI,
       },
       {
         path: "alimentos",
@@ -140,95 +141,114 @@ const routes = [
       {
         path: "editar-alimentos",
         name: "Editar Alimento",
-        component: EditarAlimentos
+        component: EditarAlimentos,
+        beforeEnter: Guard.rolI,
       },
       {
         path: "editar-hospedajes",
         name: "Editar Hospedaje",
-        component: EditarHospedajes
+        component: EditarHospedajes,
+        beforeEnter: Guard.rolI,
       },
       {
         path: "editar-recreaciones",
         name: "Editar Recreacion",
-        component: EditarRecreaciones
+        component: EditarRecreaciones,
+        beforeEnter: Guard.rolI,
       },
       {
         path: "editar-transportes",
         name: "Editar Transporte",
-        component: EditarTransportes
+        component: EditarTransportes,
+        beforeEnter: Guard.rolI,
       },
       {
         path: "editar-culturales",
         name: "Editar Atractivo Cultural",
-        component: EditarCulturales
+        component: EditarCulturales,
+        beforeEnter: Guard.rolI,
       },
       {
         path: "editar-naturales",
         name: "Editar Atractivo Natural",
-        component: EditarNaturales
+        component: EditarNaturales,
+        beforeEnter: Guard.rolI,
       },
       {
         path: "editar-representantes",
         name: "Editar Representante",
-        component: EditarRepresentantes
+        component: EditarRepresentantes,
+        beforeEnter: Guard.rolI,
       },
 
       //CREABLES
       {
         path: "crear-alimentos",
         name: "Crear Alimento",
-        component: CrearAlimentos
+        component: CrearAlimentos,
+        beforeEnter: Guard.rolI,
       },
       {
         path: "crear-hospedajes",
         name: "Crear Hospedaje",
-        component: CrearHospedajes
+        component: CrearHospedajes,
+        beforeEnter: Guard.rolI,
       },
       {
         path: "crear-recreaciones",
         name: "Crear Recreacion",
-        component: CrearRecreaciones
+        component: CrearRecreaciones,
+        beforeEnter: Guard.rolI,
       },
       {
         path: "crear-transportes",
         name: "Crear Transporte",
-        component: CrearTransportes
+        component: CrearTransportes,
+        beforeEnter: Guard.rolI,
       },
       {
         path: "crear-culturales",
         name: "Crear Atractivo Cultural",
-        component: CrearCulturales
+        component: CrearCulturales,
+        beforeEnter: Guard.rolI,
       },
       {
         path: "crear-naturales",
         name: "Crear Atractivo Natural",
-        component: CrearNaturales
+        component: CrearNaturales,
+        beforeEnter: Guard.rolI,
       },
       {
         path: "crear-representantes",
         name: "Crear Representante",
-        component: CrearRepresentantes
+        component: CrearRepresentantes,
+        beforeEnter: Guard.rolI,
       },
 
       //USUARIOS
       {
         path: "usuarios",
         name: "Usuarios",
-        component: Usuarios
+        component: Usuarios,
+        beforeEnter: Guard.rolI,
       },
       {
         path: "editar-usuarios",
         name: "Editar Usuario",
-        component: EditarUsuarios
+        component: EditarUsuarios,
+        beforeEnter: Guard.rolI,
       },
       {
         path: "crear-usuarios",
         name: "Crear Usuario",
-        component: CrearUsuarios
+        component: CrearUsuarios,
+        beforeEnter: Guard.rolI,
       },
     ],
+
     beforeEnter: Guard.auth
   },
+
   { path: "*", component: NotFound },
   { path: "/inicio", name: "Login", component: Login },
 ];

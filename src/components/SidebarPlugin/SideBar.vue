@@ -8,17 +8,17 @@
         -->
     <!-- -->
     <div class="sidebar-wrapper" id="style-3">
-      <div class=" d-flex justify-content-center">
-        <a href="#" class="simple-text">
+      <div class="ll d-flex justify-content-center">
+        <a href="/municipios" class="simple-text">
             <div class="navbar-brand">
-                <img src="@/assets/img/Logo.png" height="64">
+                <img src="@/assets/img/Logo.png" class="logo" height="64">             
             </div>
         </a>
       </div>
       <slot>
 
       </slot>
-      <ul class="nav">
+      <ul class="nav mt-2">
         <!--By default vue-router adds an active class to each route link. This way the links are colored when clicked-->
         <slot name="links">
           <sidebar-link v-for="(link,index) in sidebarLinks"
@@ -46,7 +46,7 @@ export default {
     },
     backgroundColor: {
       type: String,
-      default: "white",
+      default: "darkblue",
       validator: value => {
         let acceptedValues = ["white", "black", "darkblue"];
         return acceptedValues.indexOf(value) !== -1;
@@ -54,7 +54,7 @@ export default {
     },
     activeColor: {
       type: String,
-      default: "info",
+      default: 'success',
       validator: value => {
         let acceptedValues = [
           "primary",
@@ -132,8 +132,19 @@ export default {
 };
 </script>
 <style>
-  .logo{
+  .ll {
     background-color: white;
-    border-radius: 12px;
+  }
+
+  .logo{
+    /*background-color: white;*/
+    height: 88px;
+    border-color: black;
+    /*border-radius: 360px;*/
+  }
+
+  .logo:hover {
+    transform: scale(1.1);
+    transition: transform .2s;
   }
 </style>

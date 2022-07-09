@@ -2,16 +2,23 @@
   <div class="wrapper">
     <side-bar>
       <template slot="links">
-        <!-- <sidebar-link to="/dashboard" name="Dashboard" icon="ti-panel"/> -->
-        <!-- <sidebar-link to="/stats" name="User Profile" icon="ti-user"/> -->
-        <!-- <sidebar-link to="/table-list" name="Table List" icon="ti-view-list-alt"/> -->
-        <sidebar-link to="/municipios" name="Municipios" icon="ti-view-list-alt"/>
-        <sidebar-link to="/usuarios" name="Usuarios" icon="ti-pencil-alt2"/>
-        <sidebar-link to="/representantes" name="Representantes" icon="ti-pencil-alt2"/>
-        <!-- <sidebar-link to="/typography" name="Typography" icon="ti-text"/> -->
-        <!-- <sidebar-link to="/icons" name="Icons" icon="ti-pencil-alt2"/> -->
-        <!-- <sidebar-link to="/maps" name="Map" icon="ti-map"/> -->
-        <!-- <sidebar-link to="/notifications" name="Notifications" icon="ti-bell"/> -->
+        <sidebar-link 
+          to="/municipios" 
+          name="Municipios" 
+          icon="ti-view-list-alt"
+        />
+        <sidebar-link 
+          to="/usuarios" 
+          name="Usuarios" 
+          icon="ti-pencil-alt2"
+          v-if="rol == 1"
+        />
+        <sidebar-link 
+          to="/representantes" 
+          name="Representantes" 
+          icon="ti-pencil-alt2"
+          v-if="rol == 1"
+        />
       </template>
       <mobile-menu>
         <form @submit.stop.prevent="logout">
@@ -21,13 +28,6 @@
             </button>
           </li>
         </form>
-
-        <li class="nav-item d-flex justify-content-center">
-          <router-link to="/dashboard" class="nav-link">
-            <i class="ti-settings"></i>
-            <p>Perfil</p>
-          </router-link>
-        </li>
         <li class="divider"></li>
       </mobile-menu>
     </side-bar>
@@ -60,6 +60,7 @@ export default {
   data(){
     return {
       token: localStorage.getItem('user_token'),
+      rol: localStorage.getItem('rol'),
     }
   },
 
@@ -70,13 +71,37 @@ export default {
       }
     },
 
-    logout()
+    async logout()
     {  
-      localStorage.removeItem('user_token');
-      this.$swal( 
-        'Cierre de Sesión Exitoso!'
-      );
-      this.$router.push("/inicio");
+
+      try {
+
+        let response = await this.axios.post(`http://127.0.0.1:8000/api/auth/logout`, {
+          headers:{
+            'Authorization': `Bearer ${this.token}`
+          } 
+        })
+        if (response.status == 200) {
+          this.$swal({
+            icon: 'success',
+            text: 'Cierre de Sesión Exitoso!',
+          })
+          this.$router.push('/inicio')
+        }
+
+      } catch (error) {
+
+          localStorage.removeItem('user_token');
+          localStorage.removeItem('ref');
+          localStorage.removeItem('rol');
+
+          this.$swal({
+            icon: 'success',
+            text: 'Cierre de Sesión Exitoso!',
+          })
+          this.$router.push('/inicio')
+
+      }
     }
   }
 };
