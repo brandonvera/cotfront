@@ -16,8 +16,8 @@
           <li class="nav-item">
             <form @submit.stop.prevent="logout"> 
               <button class="nav-link btn btn-link" type="submit">
-                <i class="ti-panel"></i>
                 <p>
+                  <i class="ti-arrow-circle-down"></i>
                   Salir
                 </p>
               </button>

@@ -23,7 +23,7 @@
 	              <label class="form-label" for="form2Example28">Contraseña</label>
 	            </div>
 
-	            <p v-if="error" class="error text-red">Algun Dato es incorrecto, revisa de nuevo.</p>
+	            <p v-if="error" class="error text-red">Algún Dato es incorrecto, revisá de nuevo.</p>
 
 	            <div class="pt-1 mb-4">
 	              <button class="btn btn-success btn-lg btn-block" type="submit" v-if="loader2">Ingresar</button>

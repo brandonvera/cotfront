@@ -4,7 +4,7 @@
       <nav>
         <ul>
           <li>
-            <router-link :to="{path:'/dashboard'}">Inicio</router-link>
+            <router-link :to="{path:'/municipios'}">Inicio</router-link>
           </li>
         </ul>
       </nav>

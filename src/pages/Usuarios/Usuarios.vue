@@ -7,7 +7,7 @@
               <input
                   class="form-control mr-sm-2 buscador"
                   type="search"
-                  placeholder="Nombre"
+                  placeholder="Nombre o Estado"
                   aria-label="Search"
                   v-model="buscador"
                   @keyup="buscarUsuarios"

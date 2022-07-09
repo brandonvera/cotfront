@@ -46,7 +46,7 @@
 		                      class="form-control"
 		                      v-model="naturales.estado"
 		                    >
-		                      <option disabled value="">Seleccione algun Estado</option>
+		                      <option disabled value="">Seleccione algún Estado</option>
 		                      <option value="ACTIVO">Activo</option>
 		                      <option value="INACTIVO">Inactivo</option>
 		                    </select>

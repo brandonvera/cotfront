@@ -16,21 +16,11 @@
 		                              label="Persona"
 		                              placeholder="Persona"
 		                              v-model="representantes.persona"
+		                              onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))"
 		                              id="inputNombre">
 		                    </fg-input>
 		                  </div>
 		                </div>
-
-		                <!-- <div class="row">
-		                  <div class="col-md-12">
-		                    <fg-input type="text"
-		                              label="Apellido"
-		                              placeholder="Apellido"
-		                              v-model="representantes.apellido"
-		                              id="inputNombre">
-		                    </fg-input>
-		                  </div>
-		                </div> -->
 
 		                <div class="row">
 		                  <div class="col-md-12">
@@ -38,6 +28,7 @@
 		                              label="Cargo"
 		                              placeholder="Cargo"
 		                              v-model="representantes.cargo"
+		                              onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))"
 		                              id="inputNombre">
 		                    </fg-input>
 		                  </div>
@@ -46,8 +37,8 @@
 		                <div class="row">
 		                  <div class="col-md-12">
 		                    <fg-input type="text"
-		                              label="Telefono"
-		                              placeholder="Telefono"
+		                              label="Teléfono"
+		                              placeholder="Teléfono"
 		                              v-model="representantes.telefono"
 		                              id="inputEstado"
 		                              onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
@@ -91,7 +82,7 @@
 		                      class="form-control"
 		                      v-model="representantes.estado"
 		                    >
-		                      <option disabled value="">Seleccione algun Estado</option>
+		                      <option disabled value="">Seleccione algún Estado</option>
 		                      <option value="ACTIVO">Activo</option>
 		                      <option value="INACTIVO">Inactivo</option>
 		                    </select>

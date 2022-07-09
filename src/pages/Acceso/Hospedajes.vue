@@ -7,7 +7,7 @@
               <input
                   class="form-control mr-sm-2 buscador"
                   type="search"
-                  placeholder="Razon Social"
+                  placeholder="Razón Social o Estado"
                   aria-label="Search"
                   v-model="buscador"
                   @keyup="buscarHospedajes"
@@ -57,9 +57,9 @@
                 <thead class="text-center">
                 <slot>
                   <th>Id</th>
-                  <th>Razon Social</th>
+                  <th>Razón Social</th>
                   <th>Establecimientos</th>
-                  <th>Telefono</th>
+                  <th>Teléfono</th>
                   <th>Correo</th>
                   <th>Dirección</th>
                   <th>Municipio</th>

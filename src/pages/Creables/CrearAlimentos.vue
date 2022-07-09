@@ -13,8 +13,8 @@
           				<div class="row">
 		                  <div class="col-md-12">
 		                    <fg-input type="text"
-		                              label="Razon Social"
-		                              placeholder="Razon Social"
+		                              label="Razón Social"
+		                              placeholder="Razón Social"
 		                              v-model="alimentos.razon_social"
 		                              id="inputNombre">
 		                    </fg-input>
@@ -36,8 +36,8 @@
 		                <div class="row">
 		                  <div class="col-md-12">
 		                    <fg-input type="text"
-		                              label="Telefono"
-		                              placeholder="Telefono"
+		                              label="Teléfono"
+		                              placeholder="Teléfono"
 		                              v-model="alimentos.telefono"
 		                              id="inputEstado"
 		                              onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
@@ -81,7 +81,7 @@
 		                      class="form-control"
 		                      v-model="alimentos.estado"
 		                    >
-		                      <option disabled value="">Seleccione algun Estado</option>
+		                      <option disabled value="">Seleccione algún Estado</option>
 		                      <option value="ACTIVO">Activo</option>
 		                      <option value="INACTIVO">Inactivo</option>
 		                    </select>

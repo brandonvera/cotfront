@@ -5,7 +5,7 @@
         <sidebar-link 
           to="/municipios" 
           name="Municipios" 
-          icon="ti-view-list-alt"
+          icon="ti-world"
         />
         <sidebar-link 
           to="/usuarios" 
@@ -16,7 +16,7 @@
         <sidebar-link 
           to="/representantes" 
           name="Representantes" 
-          icon="ti-pencil-alt2"
+          icon="ti-agenda"
           v-if="rol == 1"
         />
       </template>
@@ -24,7 +24,7 @@
         <form @submit.stop.prevent="logout">
           <li class="nav-item d-flex justify-content-center">
             <button class="nav-link btn btn-link" type="submit">
-              <p><i class="ti-panel"></i>Salir</p>
+              <p><i class="ti-arrow-circle-down"></i>Salir</p>
             </button>
           </li>
         </form>

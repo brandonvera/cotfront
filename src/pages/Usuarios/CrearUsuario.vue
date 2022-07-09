@@ -17,6 +17,7 @@
 		                              label="Nombre"
 		                              placeholder="Nombre"
 		                              v-model="usuarios.nombre"
+		                              onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))"
 		                              id="inputNombre">
 		                    </fg-input>
 		                  </div>
@@ -28,6 +29,7 @@
 		                              label="Apellido"
 		                              placeholder="Apellido"
 		                              v-model="usuarios.apellido"
+		                              onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))"
 		                              id="inputApellido"
 		                    >
 		                    </fg-input>
@@ -64,9 +66,10 @@
 		                      name="Estado"
 		                      id="Estado"
 		                      class="form-control"
+		                      required
 		                      v-model="usuarios.estado"
 		                    >
-		                      <option disabled value="">Seleccione algun Estado</option>
+		                      <option disabled>Estado</option>
 		                      <option value="ACTIVO">Activo</option>
 		                      <option value="INACTIVO">Inactivo</option>
 		                    </select>
@@ -83,8 +86,7 @@
 		                        required
 		                        v-model="usuarios.id_tipo"
 		                    >
-		                        <option disabled value="">
-		                        </option>
+		                        <option disabled>Rol</option>
 		                        <option v-for="r in rol" :key="r.id" v-bind:value="r.id">{{
 		                          r.tipo_usuario
 		                        }}</option>
