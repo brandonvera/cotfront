@@ -174,8 +174,8 @@
 		          if (response.status == 200) {
 		            this.$swal({
 		                  icon: 'success',
-		                  title: 'Usuario desactivado con exito!',
-		                  text: 'El Usuario seleccionado fue desactivado con exito!',
+		                  title: 'Usuario desactivado con éxito!',
+		                  text: 'El Usuario seleccionado fue desactivado con éxito!',
 		            })
 		            this.$router.push('/municipios')
 		          }
@@ -184,7 +184,7 @@
 		        {
 		          this.loader2 = true
 		          this.loader = null
-		          this.$swal({title: 'Ocurrio un error!',text: 'Valide la accion nuevamente!',icon: 'info'})
+		          this.$swal({title: 'Ocurrió un error!',text: 'Valide la acción nuevamente!',icon: 'info'})
 		        }
       		},
 
@@ -205,7 +205,7 @@
 		          fileLink.click();
 		          this.$swal({
 		            icon: 'success',
-		            title: '¡Archivo descargado con exito!',
+		            title: '¡Archivo descargado con éxito!',
 		          })
 		        });
 		    },

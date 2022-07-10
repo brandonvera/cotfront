@@ -164,8 +164,8 @@
 		        this.loader2 = true
 		        this.$swal({
 		              icon: 'success',
-		              title: 'Modificacion exitosa!',
-		              text: 'Atractivo Cultural modificado con exito!',
+		              title: 'Modificación éxitosa!',
+		              text: 'Atractivo Cultural modificado con éxito!',
 		        }); 
 		        localStorage.removeItem('cul')
 		        this.$router.push('/culturales')
@@ -174,8 +174,8 @@
 		        this.loader = false
 		        this.loader2 = true
 		        this.$swal({
-		              title: 'Ocurrio un error!',
-		              text: 'Valide la informacion suministrada nuevamente!',
+		              title: 'Ocurrió un error!',
+		              text: 'Valide la información suministrada nuevamente!',
 		              icon: 'info'
 		        })
 		      })

@@ -214,8 +214,8 @@
 			        this.recreaciones.id_representantes = ''
 			        this.$swal({
 			              icon: 'success',
-			              title: 'Creacion exitosa!',
-			              text: 'Registro de recreación creado con exito!',
+			              title: 'Creación éxitosa!',
+			              text: 'Registro de recreación creado con éxito!',
 			        });
 			        this.$router.push('/recreaciones')
       			})
@@ -224,7 +224,7 @@
 			        this.loader2 = true
 			        this.$swal({
 			              title: 'Ocurrio un error!',
-			              text: 'Valide la informacion suministrada nuevamente!',
+			              text: 'Valide la información suministrada nuevamente!',
 			              icon: 'info'
 			    	})
     			})

@@ -194,8 +194,8 @@
 	          if (response.status == 200) {
 	            this.$swal({
 	                  icon: 'success',
-	                  title: 'Hospedaje desactivado con exito!',
-	                  text: 'El Hospedaje seleccionado fue desactivado con exito!',
+	                  title: 'Hospedaje desactivado con éxito!',
+	                  text: 'El Hospedaje seleccionado fue desactivado con éxito!',
 	            })
 	            this.$router.push('/opciones')
 	          }
@@ -204,7 +204,7 @@
 	        {
 	          this.loader2 = true
 	          this.loader = null
-	          this.$swal({title: 'Ocurrio un error!',text: 'Valide la accion nuevamente!',icon: 'info'})
+	          this.$swal({title: 'Ocurrió un érror!',text: 'Valide la acción nuevamente!',icon: 'info'})
 	        }
 	      },
 
@@ -225,7 +225,7 @@
 	          fileLink.click();
 	          this.$swal({
 	            icon: 'success',
-	            title: '¡Archivo descargado con exito!',
+	            title: '¡Archivo descargado con éxito!',
 	          })
 	        });
 	      },
@@ -242,14 +242,14 @@
 	        .then((response) => {
 	          this.$swal({
 	            icon: 'success',
-	            title: 'Hospedaje importado con exito!',
-	            text: 'El Hospedaje seleccionado fue importado con exito!',
+	            title: 'Hospedaje importado con éxito!',
+	            text: 'El Hospedaje seleccionado fue importado con éxito!',
 	          })
 	        })
 	        .catch((error) => {
 	          this.$swal({
 	            icon: 'info',
-	            title: 'Ocurrio un error!',
+	            title: 'Ocurrió un érror!',
 	            text: 'Valide la información nuevamente!',
 	          })
 	        })

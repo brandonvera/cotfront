@@ -150,8 +150,8 @@
 			        this.representantes.estado = ''
 			        this.$swal({
 			              icon: 'success',
-			              title: 'Creacion exitosa!',
-			              text: 'Registro de representante creado con exito!',
+			              title: 'Creación éxitosa!',
+			              text: 'Registro de representante creado con éxito!',
 			        });
 			        this.$router.push('/representantes')
       			})
@@ -159,8 +159,8 @@
 			        this.loader = false
 			        this.loader2 = true
 			        this.$swal({
-			              title: 'Ocurrio un error!',
-			              text: 'Valide la informacion suministrada nuevamente!',
+			              title: 'Ocurrió un error!',
+			              text: 'Valide la información suministrada nuevamente!',
 			              icon: 'info'
 			    	})
     			})

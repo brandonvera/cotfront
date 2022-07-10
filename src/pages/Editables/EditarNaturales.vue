@@ -164,8 +164,8 @@
 		        this.loader2 = true
 		        this.$swal({
 		              icon: 'success',
-		              title: 'Modificacion exitosa!',
-		              text: 'Atractivo Natural modificado con exito!',
+		              title: 'Modificación éxitosa!',
+		              text: 'Atractivo Natural modificado con éxito!',
 		        }); 
 		        localStorage.removeItem('nat')
 		        this.$router.push('/naturales')
@@ -174,8 +174,8 @@
 		        this.loader = false
 		        this.loader2 = true
 		        this.$swal({
-		              title: 'Ocurrio un error!',
-		              text: 'Valide la informacion suministrada nuevamente!',
+		              title: 'Ocurrió un error!',
+		              text: 'Valide la información suministrada nuevamente!',
 		              icon: 'info'
 		        })
 		      })

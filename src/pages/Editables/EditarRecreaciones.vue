@@ -241,7 +241,7 @@
 		        this.loader2 = true
 		        this.$swal({
 		              icon: 'success',
-		              title: 'Modificacion exitosa!',
+		              title: 'Modificación éxitosa!',
 		              text: 'Recreación modificada con exito!',
 		        }); 
 		        localStorage.removeItem('rec')
@@ -251,8 +251,8 @@
 		        this.loader = false
 		        this.loader2 = true
 		        this.$swal({
-		              title: 'Ocurrio un error!',
-		              text: 'Valide la informacion suministrada nuevamente!',
+		              title: 'Ocurrió un érror!',
+		              text: 'Valide la información suministrada nuevamente!',
 		              icon: 'info'
 		        })
 		      })

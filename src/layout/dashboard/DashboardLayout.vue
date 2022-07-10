@@ -84,7 +84,7 @@ export default {
         if (response.status == 200) {
           this.$swal({
             icon: 'success',
-            text: 'Cierre de Sesión Exitoso!',
+            title: 'Cierre de Sesión Éxitoso!',
           })
           this.$router.push('/inicio')
         }
@@ -97,7 +97,7 @@ export default {
 
           this.$swal({
             icon: 'success',
-            text: 'Cierre de Sesión Exitoso!',
+            title: 'Cierre de Sesión Éxitoso!',
           })
           this.$router.push('/inicio')
 

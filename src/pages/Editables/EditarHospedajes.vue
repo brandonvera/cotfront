@@ -1,4 +1,4 @@
-<template>
+ó<template>
 	<div class="row justify-content-center">
     	<div class="col-xl-8 col-lg-7 col-md-6">
     		<div class="bot">
@@ -241,8 +241,8 @@
 		        this.loader2 = true
 		        this.$swal({
 		              icon: 'success',
-		              title: 'Modificacion exitosa!',
-		              text: 'Hospedaje modificado con exito!',
+		              title: 'Modificación éxitosa!',
+		              text: 'Hospedaje modificado con éxito!',
 		        }); 
 		        localStorage.removeItem('hos')
 		        this.$router.push('/hospedajes')
@@ -251,8 +251,8 @@
 		        this.loader = false
 		        this.loader2 = true
 		        this.$swal({
-		              title: 'Ocurrio un error!',
-		              text: 'Valide la informacion suministrada nuevamente!',
+		              title: 'Ocurrió un error!',
+		              text: 'Valide la información suministrada nuevamente!',
 		              icon: 'info'
 		        })
 		      })

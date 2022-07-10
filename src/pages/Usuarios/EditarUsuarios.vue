@@ -192,8 +192,8 @@
 
 				        this.$swal({
 				            icon: 'success',
-				            title: 'Modificacion exitosa!',
-				            text: 'Perfil de usuario modificado con exito!',
+				            title: 'Modificación éxitosa!',
+				            text: 'Perfil de usuario modificado con éxito!',
 				        });
 
 				        localStorage.removeItem('user')
@@ -205,7 +205,7 @@
 			          	this.$swal({
 				          icon: 'info',
 				          title: 'Oops...',
-				          text: 'Ocurrio un error, valida la informacion nuevamente!',
+				          text: 'Ocurrió un error, valida la información nuevamente!',
 			          	})
 			          	this.loader = false
 			          	this.loader2 = true
@@ -222,8 +222,8 @@
 
 			        		this.$swal({
 					              icon: 'success',
-					              title: 'Modificacion exitosa!',
-					              text: 'Perfil de usuario modificado con exito!',
+					              title: 'Modificación éxitosa!',
+					              text: 'Perfil de usuario modificado con éxito!',
 					        });
 
 					        localStorage.removeItem('user')
@@ -234,7 +234,7 @@
 			            	this.$swal({
 				          		icon: 'info',
 				          		title: 'Oops...',
-				          		text: 'Ocurrio un error, valida la informacion nuevamente!',
+				          		text: 'Ocurrió un érror, valida la información nuevamente!',
 				          	})
 				          	this.loader = false
 				          	this.loader2 = true
@@ -243,7 +243,7 @@
 	      				this.$swal({
 			          		icon: 'error',
 			          		title: 'Oops... Valida la Contraseña!',
-			          		text: 'El formato de contrsaeña debe ser minimo 6 y maximo 12 caracteres, debe poseer 1 Mayuscula, 1 minuscula, 1 numero y 1 caracter especial como minimo!',
+			          		text: 'El formato de contrsaeña debe ser mínimo 6 y máximo 12 caracteres, debe poseer 1 Mayúscula, 1 minúscula, 1 número y 1 carácter especial como mínimo!',
 			          	})
 			          	this.loader = false
 			          	this.loader2 = true

@@ -83,7 +83,7 @@
        					this.$swal({
                 			icon: 'info',
                 			title: 'Oops...',
-                			text: 'Tu usuario posee un Estado INACTIVO! para continuar comunicate con el administrador para reactivar tu usuario',
+                			text: 'Tu usuario poseé un Estado INACTIVO! para continuar comunicate con el administrador para reactivar tu usuario',
                 		})
                 		this.loader = false
                 		this.loader2 = true

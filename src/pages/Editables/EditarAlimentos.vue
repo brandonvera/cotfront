@@ -241,8 +241,8 @@
 		        this.loader2 = true
 		        this.$swal({
 		              icon: 'success',
-		              title: 'Modificacion exitosa!',
-		              text: 'Alimento modificado con exito!',
+		              title: 'Modificación éxitosa!',
+		              text: 'Alimento modificado con éxito!',
 		        }); 
 		        localStorage.removeItem('alim')
 		        this.$router.push('/alimentos')
@@ -251,8 +251,8 @@
 		        this.loader = false
 		        this.loader2 = true
 		        this.$swal({
-		              title: 'Ocurrio un error!',
-		              text: 'Valide la informacion suministrada nuevamente!',
+		              title: 'Ocurrió un error!',
+		              text: 'Valide la información suministrada nuevamente!',
 		              icon: 'info'
 		        })
 		      })

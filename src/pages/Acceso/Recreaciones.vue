@@ -194,8 +194,8 @@
           if (response.status == 200) {
             this.$swal({
                   icon: 'success',
-                  title: 'Recreacion desactivada con exito!',
-                  text: 'La recreacion seleccionada fue desactivada con exito!',
+                  title: 'Recreación desactivada con éxito!',
+                  text: 'La recreación seleccionada fue desactivada con éxito!',
             })
             this.$router.push('/opciones')
           }
@@ -204,7 +204,7 @@
         {
           this.loader2 = true
           this.loader = null
-          this.$swal({title: 'Ocurrio un error!',text: 'Valide la accion nuevamente!',icon: 'info'})
+          this.$swal({title: 'Ocurrió un érror!',text: 'Valide la acción nuevamente!',icon: 'info'})
         }
       },
 
@@ -225,7 +225,7 @@
           fileLink.click();
           this.$swal({
             icon: 'success',
-            title: '¡Archivo descargado con exito!',
+            title: '¡Archivo descargado con éxito!',
           })
         });
       },
@@ -242,14 +242,14 @@
         .then((response) => {
           this.$swal({
             icon: 'success',
-            title: 'Recreacion importada con exito!',
-            text: 'La Recreacion seleccionada fue importada con exito!',
+            title: 'Recreación importada con éxito!',
+            text: 'La Recreación seleccionada fue importada con éxito!',
           })
         })
         .catch((error) => {
           this.$swal({
             icon: 'info',
-            title: 'Ocurrio un error!',
+            title: 'Ocurrió un érror!',
             text: 'Valide la información nuevamente!',
           })
         })

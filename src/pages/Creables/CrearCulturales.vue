@@ -152,8 +152,8 @@
 			        this.culturales.id_municipio = ''
 			        this.$swal({
 			              icon: 'success',
-			              title: 'Creacion exitosa!',
-			              text: 'Registro de atractivo cultural creado con exito!',
+			              title: 'Creación éxitosa!',
+			              text: 'Registro de atractivo cultural creado con éxito!',
 			        });
 			        this.$router.push('/culturales')
       			})
@@ -161,8 +161,8 @@
 			        this.loader = false
 			        this.loader2 = true
 			        this.$swal({
-			              title: 'Ocurrio un error!',
-			              text: 'Valide la informacion suministrada nuevamente!',
+			              title: 'Ocurrió un error!',
+			              text: 'Valide la información suministrada nuevamente!',
 			              icon: 'info'
 			    	})
     			})

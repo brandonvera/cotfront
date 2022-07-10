@@ -214,8 +214,8 @@
 			        this.alimentos.id_representantes = ''
 			        this.$swal({
 			              icon: 'success',
-			              title: 'Creacion exitosa!',
-			              text: 'Registro de alimento creado con exito!',
+			              title: 'Creación éxitosa!',
+			              text: 'Registro de alimento creado con éxito!',
 			        });
 			        this.$router.push('/alimentos')
       			})
@@ -223,8 +223,8 @@
 			        this.loader = false
 			        this.loader2 = true
 			        this.$swal({
-			              title: 'Ocurrio un error!',
-			              text: 'Valide la informacion suministrada nuevamente!',
+			              title: 'Ocurrió un error!',
+			              text: 'Valide la información suministrada nuevamente!',
 			              icon: 'info'
 			    	})
     			})

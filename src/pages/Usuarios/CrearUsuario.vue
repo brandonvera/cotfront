@@ -164,8 +164,8 @@
 				      	this.loader2 = true
 				      	this.$swal({
 				            icon: 'success',
-				            title: 'Creacion exitosa!',
-				            text: 'Usuario creado con exito!',
+				            title: 'Creación éxitosa!',
+				            text: 'Usuario creado con éxito!',
 				      	});
 				      	this.$router.push('/usuarios');
 				    })
@@ -173,8 +173,8 @@
 					    this.loader = false
 					    this.loader2 = true
 					    this.$swal({
-				            title: 'Ocurrio un error!',
-				            text: 'Valide la informacion suministrada nuevamente!',
+				            title: 'Ocurrió un error!',
+				            text: 'Valide la información suministrada nuevamente!',
 				            icon: 'info'
 					    })
 				    });
@@ -184,7 +184,7 @@
 			        this.$swal({
 			          icon: 'error',
 			          title: 'Oops... Valida la contraseña!',
-			          text: 'El formato de contrsaeña debe ser minimo 6 y maximo 12 caracteres, debe poseer 1 Mayuscula, 1 minuscula, 1 numero y 1 caracter especial como minimo!',
+			          text: 'El formato de contrsaeña debe ser mínimo 6 y máximo 12 caracteres, debe poseer 1 Mayúscula, 1 minúscula, 1 número y 1 carácter especial como mínimo!',
 			        })
       			}
 			},

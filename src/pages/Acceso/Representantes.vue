@@ -7,7 +7,7 @@
               <input
                   class="form-control mr-sm-2 buscador"
                   type="search"
-                  placeholder="Nombre"
+                  placeholder="Nombre o Estado"
                   aria-label="Search"
                   v-model="buscador"
                   @keyup="buscarRepresentantes"
@@ -185,8 +185,8 @@
           if (response.status == 200) {
             this.$swal({
                   icon: 'success',
-                  title: 'Representante desactivado con exito!',
-                  text: 'El representante seleccionado fue desactivado con exito!',
+                  title: 'Representante desactivado con éxito!',
+                  text: 'El representante seleccionado fue desactivado con éxito!',
             })
             this.$router.push('/municipios')
           }
@@ -195,7 +195,7 @@
         {
           this.loader2 = true
           this.loader = null
-          this.$swal({title: 'Ocurrio un error!',text: 'Valide la accion nuevamente!',icon: 'info'})
+          this.$swal({title: 'Ocurrió un érror!',text: 'Valide la acción nuevamente!',icon: 'info'})
         }
       },
 
@@ -216,7 +216,7 @@
           fileLink.click();
           this.$swal({
             icon: 'success',
-            title: '¡Archivo descargado con exito!',
+            title: '¡Archivo descargado con éxito!',
           })
         });
       },
@@ -233,14 +233,14 @@
         .then((response) => {
           this.$swal({
             icon: 'success',
-            title: 'Representante importado con exito!',
-            text: 'El representante seleccionado fue importado con exito!',
+            title: 'Representante importado con éxito!',
+            text: 'El representante seleccionado fue importado con éxito!',
           })
         })
         .catch((error) => {
           this.$swal({
             icon: 'info',
-            title: 'Ocurrio un error!',
+            title: 'Ocurrió un érror!',
             text: 'Valide la información nuevamente!',
           })
         })

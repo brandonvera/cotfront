@@ -241,8 +241,8 @@
 		        this.loader2 = true
 		        this.$swal({
 		              icon: 'success',
-		              title: 'Modificacion exitosa!',
-		              text: 'Transporte modificado con exito!',
+		              title: 'Modificación éxitosa!',
+		              text: 'Transporte modificado con éxito!',
 		        }); 
 		        localStorage.removeItem('tra')
 		        this.$router.push('/transportes')
@@ -251,8 +251,8 @@
 		        this.loader = false
 		        this.loader2 = true
 		        this.$swal({
-		              title: 'Ocurrio un error!',
-		              text: 'Valide la informacion suministrada nuevamente!',
+		              title: 'Ocurrió un error!',
+		              text: 'Valide la información suministrada nuevamente!',
 		              icon: 'info'
 		        })
 		      })

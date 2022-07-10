@@ -173,8 +173,8 @@
 		        this.loader2 = true
 		        this.$swal({
 		              icon: 'success',
-		              title: 'Modificación exitosa!',
-		              text: 'Representante modificado con exito!',
+		              title: 'Modificación éxitosa!',
+		              text: 'Representante modificado con éxito!',
 		        }); 
 		        localStorage.removeItem('rep')
 		        this.$router.push('/representantes')
@@ -183,8 +183,8 @@
 		        this.loader = false
 		        this.loader2 = true
 		        this.$swal({
-		              title: 'Ocurrio un error!',
-		              text: 'Valide la informacion suministrada nuevamente!',
+		              title: 'Ocurrió un error!',
+		              text: 'Valide la información suministrada nuevamente!',
 		              icon: 'info'
 		        })
 		      })
