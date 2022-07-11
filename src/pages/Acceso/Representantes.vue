@@ -73,10 +73,10 @@
                   <slot> 
                     <td>{{item.id}}</td>
                     <td>{{item.persona}}</td>                   
-                    <td>{{item.cargo}}</td>
-                    <td>{{item.telefono}}</td>
-                    <td>{{item.correo}}</td>
-                    <td>{{item.direccion}}</td>
+                    <td>{{item.cargo == null ? "-" : item.cargo}}</td>
+                    <td>{{item.telefono == null ? "-" : item.telefono}}</td>
+                    <td>{{item.correo == null ? "-" : item.correo}}</td>
+                    <td>{{item.direccion == null ? "-" : item.direccion}}</td>
                     <td>{{item.estado}}</td>
                     <td>{{item.created_at.split("T")[0]}}</td>
                     <td>{{item.updated_at.split("T")[0]}}</td>

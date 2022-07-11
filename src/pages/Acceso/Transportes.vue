@@ -75,12 +75,12 @@
                   <slot> 
                     <td>{{item.id}}</td>
                     <td>{{item.razon_social}}</td>
-                    <td>{{item.establecimientos}}</td>
-                    <td>{{item.telefono}}</td>
-                    <td>{{item.correo}}</td>
-                    <td>{{item.direccion_principal}}</td>
+                    <td>{{item.establecimientos == null ? "-" : item.establecimientos}}</td>
+                    <td>{{item.telefono == null ? "-" : item.telefono}}</td>
+                    <td>{{item.correo == null ? "-" : item.correo}}</td>
+                    <td>{{item.direccion_principal == null ? "-" : item.direccion_principal}}</td>
                     <td>{{item.municipio.nombre}}</td>
-                    <td>{{item.representante.persona}}</td>
+                    <td>{{item.representante == null ? "-" : item.representante.persona}}</td>
                     <td>{{item.estado}}</td>
                     <td>{{item.created_at.split("T")[0]}}</td>
                     <td>{{item.updated_at.split("T")[0]}}</td>
@@ -152,7 +152,7 @@
               buscador: this.buscador
             }
           }).then((result) => {
-            if(this.rol == 1) {
+            if(this.rol == 1) {             
               this.tran = result.data.transporteTodo;
             }else {
               this.tran = result.data.transporte;

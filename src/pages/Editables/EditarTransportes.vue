@@ -218,7 +218,7 @@
 		        this.transportes.id_municipio = id_municipio
 		        this.transportes.id_representantes = id_representantes
 		        this.municipioActual = response.data.transporte.municipio.nombre
-		        this.representanteActual = response.data.transporte.representante.nombre
+		        response.data.transporte.representante == null ? this.representanteActual = "" : this.representanteActual = response.data.transporte.representante.persona
 
 		      })
 		      .catch(error => {
