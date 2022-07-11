@@ -7,7 +7,7 @@
               <input
                   class="form-control mr-sm-2 buscador"
                   type="search"
-                  placeholder="Nombre o Estado"
+                  placeholder="Código o Estado"
                   aria-label="Search"
                   v-model="buscador"
                   @keyup="buscarUsuarios"
@@ -44,6 +44,7 @@
                 <thead class="text-center">
                 <slot>
                   <th>Id</th>
+                  <th>Código</th>
                   <th>Nombre</th>
                   <th>Apellido</th>
                   <th>Correo</th>
@@ -61,6 +62,7 @@
                 <tr v-for="(item, index) in paginated('usuarios')" :key="index">
                   <slot> 
                     <td>{{item.id}}</td>
+                    <td>{{item.codigo}}</td>
                     <td>{{item.nombre}}</td>
                     <td>{{item.apellido}}</td>
                     <td>{{item.email}}</td>

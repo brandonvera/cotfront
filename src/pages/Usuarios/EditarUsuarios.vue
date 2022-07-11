@@ -10,6 +10,18 @@
           		<div>
           			<form class="form" @submit.stop.prevent="editarUsuario">
 
+          				<div class="row">
+		                  <div class="col-md-12">
+		                    <fg-input type="text"
+		                              label="Código"
+		                              placeholder="COD000"      
+		                              v-model="usuarios.codigo"        
+		                              id="inputCodigo"
+		                              maxlength="6"		                 
+		                              onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 67 || event.charCode == 68 || event.charCode == 79))">
+		                    </fg-input>
+		                  </div>
+		                </div>
 
           				<div class="row">
 		                  <div class="col-md-12">
@@ -117,6 +129,7 @@
 				tipoActual: null,
 				rol: [],
 				usuarios: {
+					codigo: '',
 					nombre: '',
 					apellido: '',
 					email: '',
@@ -154,6 +167,7 @@
 		      })
 		      .then(response => {
 		        const {
+		        	codigo,
 		        	nombre,
 		        	apellido,
 		        	email,
@@ -162,6 +176,7 @@
 		        	id_tipo,		    
 		        } = response.data.user
 
+		        this.usuarios.codigo = codigo
 		        this.usuarios.nombre = nombre
 		        this.usuarios.apellido = apellido
 		        this.usuarios.email = email

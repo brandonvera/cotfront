@@ -13,6 +13,19 @@
           				<div class="row">
 		                  <div class="col-md-12">
 		                    <fg-input type="text"
+		                              label="Código"
+		                              placeholder="COD00000"      
+		                              v-model="representantes.codigo"
+		                              id="inputCodigo"
+		                              maxlength="8"         
+		                              onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 67 || event.charCode == 68 || event.charCode == 79))">
+		                    </fg-input>
+		                  </div>
+		                </div>
+
+          				<div class="row">
+		                  <div class="col-md-12">
+		                    <fg-input type="text"
 		                              label="Persona"
 		                              placeholder="Persona"
 		                              v-model="representantes.persona"
@@ -39,6 +52,7 @@
 		                    <fg-input type="text"
 		                              label="Teléfono"
 		                              placeholder="Teléfono"
+		                              maxlength="11"
 		                              v-model="representantes.telefono"
 		                              id="inputEstado"
 		                              onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
@@ -113,6 +127,7 @@
 				muni: [],
 				repre: [],
 				representantes: {
+					codigo: '',
 					persona: '',			
 					cargo: '',
 					telefono: '',
@@ -142,6 +157,7 @@
       			.then(response => {
       				this.loader = false
 			        this.loader2 = true
+			        this.representantes.codigo = ''
 			        this.representantes.persona = ''
 			        this.representantes.cargo = ''
 			        this.representantes.telefono = ''

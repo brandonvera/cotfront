@@ -13,6 +13,19 @@
           				<div class="row">
 		                  <div class="col-md-12">
 		                    <fg-input type="text"
+		                              label="Código"
+		                              placeholder="COD00000"      
+		                              v-model="representantes.codigo"
+		                              id="inputCodigo"
+		                              maxlength="8"		                 
+		                              onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 67 || event.charCode == 68 || event.charCode == 79))">
+		                    </fg-input>
+		                  </div>
+		                </div>
+
+          				<div class="row">
+		                  <div class="col-md-12">
+		                    <fg-input type="text"
 		                              label="Persona"
 		                              placeholder="Persona"
 		                              v-model="representantes.persona"
@@ -41,6 +54,7 @@
 		                              placeholder="Teléfono"
 		                              v-model="representantes.telefono"
 		                              id="inputEstado"
+		                              maxlength="11"
 		                              onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
 		                    </fg-input>
 		                  </div>
@@ -113,6 +127,7 @@
 				rep_id: localStorage.getItem('rep'),
 				municipio: localStorage.getItem('ref'),
 				representantes: {
+					codigo: '',
 					persona: '',
 					cargo: '',
 					telefono: '',
@@ -138,6 +153,7 @@
 		      })
 		      .then(response => {
 		        const {
+		        	codigo,
 		        	persona,
 		        	cargo,
 		        	telefono,
@@ -146,6 +162,7 @@
 		        	estado,
 		        } = response.data.representante
 
+		        this.representantes.codigo = codigo
 		        this.representantes.persona = persona
 		        this.representantes.cargo = cargo
 		        this.representantes.telefono = telefono

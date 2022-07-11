@@ -10,6 +10,18 @@
           		<div>
           			<form class="form" @submit.stop.prevent="crearUsuario">
 
+          				<div class="row">
+		                  <div class="col-md-12">
+		                    <fg-input type="text"
+		                              label="Código"
+		                              placeholder="COD000"      
+		                              v-model="usuarios.codigo"        
+		                              id="inputCodigo"
+		                              maxlength="6"         
+		                              onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 67 || event.charCode == 68 || event.charCode == 79))">
+		                    </fg-input>
+		                  </div>
+		                </div>
 
           				<div class="row">
 		                  <div class="col-md-12">
@@ -114,6 +126,7 @@
 				token: localStorage.getItem('user_token'),
 				rol: [],
 				usuarios: {
+					codigo: '',
 					nombre: '',
 					apellido: '',
 					email: '',
@@ -154,6 +167,7 @@
 				        }
 				    })
 				    .then(response => {
+				    	this.usuarios.codigo = ''
 				      	this.usuarios.nombre = ''
 				      	this.usuarios.apellido = ''
 				      	this.usuarios.email = ''

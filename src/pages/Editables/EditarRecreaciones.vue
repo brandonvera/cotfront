@@ -39,6 +39,7 @@
 		                    <fg-input type="text"
 		                              label="Teléfono"
 		                              placeholder="Teléfono"
+		                              maxlength="11"
 		                              v-model="recreaciones.telefono"
 		                              id="inputEstado"
 		                              onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">

@@ -40,6 +40,7 @@
 		                              placeholder="Teléfono"
 		                              v-model="transportes.telefono"
 		                              id="inputEstado"
+		                              maxlength="11"
 		                              onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
 		                    </fg-input>
 		                  </div>

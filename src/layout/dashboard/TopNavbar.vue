@@ -96,7 +96,7 @@ export default {
 <style>
 
   .tam {
-    height: 99px;
+    /*height: 99px;*/
   }
 
 </style>

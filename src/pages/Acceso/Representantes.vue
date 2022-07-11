@@ -7,7 +7,7 @@
               <input
                   class="form-control mr-sm-2 buscador"
                   type="search"
-                  placeholder="Nombre o Estado"
+                  placeholder="Código o Estado"
                   aria-label="Search"
                   v-model="buscador"
                   @keyup="buscarRepresentantes"
@@ -57,6 +57,7 @@
                 <thead class="text-center">
                 <slot>
                   <th>Id</th>
+                  <th>Código</th>
                   <th>Persona</th>                 
                   <th>Cargo</th>
                   <th>Teléfono</th>
@@ -72,6 +73,7 @@
                 <tr v-for="(item, index) in paginated('repre')" :key="index">
                   <slot> 
                     <td>{{item.id}}</td>
+                    <td>{{item.codigo}}</td>
                     <td>{{item.persona}}</td>                   
                     <td>{{item.cargo == null ? "-" : item.cargo}}</td>
                     <td>{{item.telefono == null ? "-" : item.telefono}}</td>
