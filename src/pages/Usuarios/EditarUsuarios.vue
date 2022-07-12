@@ -70,14 +70,13 @@
 		                    </fg-input>
 		                  </div>
 		                </div>
-
-		                <div class="row">
+		                <div class="row" v-if="user != id">
 		                  <div class="col-md-12">
 		                    <label for="Estado">Estado</label>
 		                    <select
 		                      name="Estado"
 		                      id="Estado"
-		                      class="form-control"
+		                      class="form-control"       
 		                      v-model="usuarios.estado"
 		                    >
 		                      <option disabled value="">Seleccione algun Estado</option>
@@ -87,7 +86,7 @@
 		                  </div>
 		                </div>
 
-		                <div class="row">
+		                <div class="row" v-if="user != id">
 		                  <div class="col-md-12">
 		                    <label for="id_tipo">Rol</label>
 		                    <select
@@ -128,6 +127,7 @@
 				user: localStorage.getItem('user'),
 				tipoActual: null,
 				rol: [],
+				id: null,
 				usuarios: {
 					codigo: '',
 					nombre: '',
@@ -165,8 +165,8 @@
 		          "Authorization": `Bearer ${this.token}`
 		        }
 		      })
-		      .then(response => {
-		        const {
+		      .then(response => {		    
+		        const {		     
 		        	codigo,
 		        	nombre,
 		        	apellido,
@@ -175,7 +175,7 @@
 		        	estado,
 		        	id_tipo,		    
 		        } = response.data.user
-
+	    
 		        this.usuarios.codigo = codigo
 		        this.usuarios.nombre = nombre
 		        this.usuarios.apellido = apellido
@@ -183,6 +183,8 @@
 		        this.usuarios.estado = estado
 		        this.usuarios.id_tipo = id_tipo		    
 		        this.tipoActual = response.data.user.tipo_usuario.tipo_usuario
+
+		        this.id = response.data.usuario.id
 
 		      })
 		      .catch(error => {

@@ -175,9 +175,9 @@
 		          })
 		          if (response.status == 200) {
 		            this.$swal({
-		                  icon: 'success',
-		                  title: 'Usuario desactivado con éxito!',
-		                  text: 'El Usuario seleccionado fue desactivado con éxito!',
+	                  icon: 'success',
+	                  title: 'Usuario desactivado con éxito!',
+	                  text: 'El Usuario seleccionado fue desactivado con éxito!',
 		            })
 		            this.$router.push('/municipios')
 		          }
@@ -186,7 +186,11 @@
 		        {
 		          this.loader2 = true
 		          this.loader = null
-		          this.$swal({title: 'Ocurrió un error!',text: 'Valide la acción nuevamente!',icon: 'info'})
+		          this.$swal({
+                  icon: 'error',
+                  title: 'No se pudo ejecutar la acción!',
+                  text: 'No puedes desactivar este usuario!',
+              })
 		        }
       		},
 
