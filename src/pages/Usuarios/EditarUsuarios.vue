@@ -151,7 +151,7 @@
 		methods: {
 
 			async rolUser() {
-				let response = await this.axios.get(`http://127.0.0.1:8000/api/auth/rol`, {
+				let response = await this.axios.get(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/rol`, {
 			        headers:{
 			          "Authorization": `Bearer ${this.token}`
 			        }
@@ -160,7 +160,7 @@
 			},
 
 			async MostrarUsuarios() {
-		      await this.axios.get(`http://127.0.0.1:8000/api/auth/usuario/${this.user}`,{
+		      await this.axios.get(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/usuario/${this.user}`,{
 		        headers:{
 		          "Authorization": `Bearer ${this.token}`
 		        }
@@ -201,7 +201,7 @@
 		      	if (this.usuarios.password == "" || this.usuarios.password == null)
 		      	{
 			      	try {
-				        let response = await this.axios.put(`http://127.0.0.1:8000/api/auth/usuario/modificar/${this.user}`,this.usuarios,{
+				        let response = await this.axios.put(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/usuario/modificar/${this.user}`,this.usuarios,{
 				          		headers:{
 				          			"Authorization": `Bearer ${this.token}`
 				          		}
@@ -231,7 +231,7 @@
 		      		if (regla2.test(this.user.password)) 
 		      		{
 			          	try {
-			          		let response = await this.axios.put(`http://127.0.0.1:8000/api/auth/usuario/modificar/${this.user}`,this.usuarios,{
+			          		let response = await this.axios.put(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/usuario/modificar/${this.user}`,this.usuarios,{
 			          			headers:{
 			          				"Authorization": `Bearer ${this.token}`
 			          			}

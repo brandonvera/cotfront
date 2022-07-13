@@ -66,7 +66,7 @@
 				this.loader = true
        			this.loader2 = false
 
-       			await this.axios.post(`http://127.0.0.1:8000/api/auth/login`, this.login)
+       			await this.axios.post(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/login`, this.login)
        			.then(response => {
        				localStorage.setItem('rol', response.data.usuario.id_tipo);
        				localStorage.setItem('user_token', response.data.token.original.access_token);

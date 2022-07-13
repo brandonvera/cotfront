@@ -175,7 +175,7 @@
 
 		methods: {
 			async Municipios(){
-		      let response = await this.axios.get(`http://127.0.0.1:8000/api/auth/municipio`, {
+		      let response = await this.axios.get(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/municipio`, {
 		        headers:{
 		          "Authorization": `Bearer ${this.token}`
 		        }
@@ -184,7 +184,7 @@
 		    },
 
 		    async Representantes(){
-		      let response = await this.axios.get(`http://127.0.0.1:8000/api/auth/representante`, {
+		      let response = await this.axios.get(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/representante`, {
 		        headers:{
 		          "Authorization": `Bearer ${this.token}`
 		        }
@@ -193,7 +193,7 @@
 		    },
 
 		    async MostrarAlimento() {
-		      await this.axios.get(`http://127.0.0.1:8000/api/auth/alimento/ver/${this.alim_id}`,{
+		      await this.axios.get(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/alimento/ver/${this.alim_id}`,{
 		        headers:{
 		          "Authorization": `Bearer ${this.token}`
 		        }
@@ -231,7 +231,7 @@
 		      this.loader = true
 		      this.loader2 = false
 		      
-		      await this.axios.put(`http://127.0.0.1:8000/api/auth/alimento/modificar/${this.alim_id}`,this.alimentos,
+		      await this.axios.put(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/alimento/modificar/${this.alim_id}`,this.alimentos,
 		      {
 		        headers:{
 		          "Authorization": `Bearer ${this.token}`

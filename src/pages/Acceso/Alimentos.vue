@@ -144,7 +144,7 @@
 
 		methods: {
       verAlimentos() {
-        axios.get(`http://127.0.0.1:8000/api/auth/alimento/${this.municipio}`,{
+        axios.get(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/alimento/${this.municipio}`,{
             headers:{
               'Authorization': `Bearer ${this.token}`
             },
@@ -186,7 +186,7 @@
           this.loader2 = false
           this.loader = true
 
-          let response = await axios.delete(`http://127.0.0.1:8000/api/auth/alimento/eliminar/${id}`,{
+          let response = await axios.delete(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/alimento/eliminar/${id}`,{
             headers:{
               'Authorization': `Bearer ${this.token}`
             }
@@ -211,7 +211,7 @@
       async exportar() {
 
         axios({
-          url: `http://127.0.0.1:8000/api/auth/alimento/exportar`,
+          url: `https://enigmatic-oasis-44862.herokuapp.com/api/auth/alimento/exportar`,
           method: 'GET',
           headers:{"Authorization": `Bearer ${this.token}`},
           responseType: 'blob',
@@ -234,7 +234,7 @@
         var $mainForm = ('#mainForm')
         var data = new FormData(mainForm)
 
-        axios.post(`http://127.0.0.1:8000/api/auth/alimento/importar`, data, {
+        axios.post(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/alimento/importar`, data, {
             headers:{
               'Authorization': `Bearer ${this.token}`
             }

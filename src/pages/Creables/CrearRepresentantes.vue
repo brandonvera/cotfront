@@ -149,7 +149,7 @@
     			this.loader = true
       			this.loader2 = false
 
-      			await this.axios.post(`http://127.0.0.1:8000/api/auth/representante/crear`, this.representantes, {
+      			await this.axios.post(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/representante/crear`, this.representantes, {
 		        	headers:{
 		          		"Authorization": `Bearer ${this.token}`
 		        	}

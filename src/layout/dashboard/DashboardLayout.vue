@@ -82,7 +82,7 @@ export default {
 
       try {
 
-        let response = await this.axios.post(`http://127.0.0.1:8000/api/auth/logout`, {
+        let response = await this.axios.post(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/logout`, {
           headers:{
             'Authorization': `Bearer ${this.token}`
           } 

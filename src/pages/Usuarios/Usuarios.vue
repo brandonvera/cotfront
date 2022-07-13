@@ -130,7 +130,7 @@
 
 		methods: {
 			verUsuarios() {
-				axios.get(`http://127.0.0.1:8000/api/auth/usuario`,{
+				axios.get(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/usuario`,{
 		            	headers:{
 		              		'Authorization': `Bearer ${this.token}`
 		            	},
@@ -168,7 +168,7 @@
 		          this.loader2 = false
 		          this.loader = true
 
-		          let response = await axios.delete(`http://127.0.0.1:8000/api/auth/usuario/eliminar/${id}`,{
+		          let response = await axios.delete(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/usuario/eliminar/${id}`,{
 		            headers:{
 		              'Authorization': `Bearer ${this.token}`
 		            }
@@ -197,7 +197,7 @@
       		async exportar() {
 
 		        axios({
-		          url: `http://127.0.0.1:8000/api/auth/usuario/exportar`,
+		          url: `https://enigmatic-oasis-44862.herokuapp.com/api/auth/usuario/exportar`,
 		          method: 'GET',
 		          headers:{"Authorization": `Bearer ${this.token}`},
 		          responseType: 'blob',

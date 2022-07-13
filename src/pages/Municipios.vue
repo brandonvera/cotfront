@@ -35,7 +35,7 @@
 		},
 
 		created() {
-			axios.get(`http://127.0.0.1:8000/api/auth/municipio`,{
+			axios.get(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/municipio`,{
 		      headers:{
 		        'Authorization': `Bearer ${this.token}`
 		      }

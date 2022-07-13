@@ -146,7 +146,7 @@
 
 		methods: {
 		    async MostrarRepresentante() {
-		      await this.axios.get(`http://127.0.0.1:8000/api/auth/representante/${this.rep_id}`,{
+		      await this.axios.get(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/representante/${this.rep_id}`,{
 		        headers:{
 		          "Authorization": `Bearer ${this.token}`
 		        }
@@ -179,7 +179,7 @@
 		      this.loader = true
 		      this.loader2 = false
 		      
-		      await this.axios.put(`http://127.0.0.1:8000/api/auth/representante/modificar/${this.rep_id}`,this.representantes,
+		      await this.axios.put(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/representante/modificar/${this.rep_id}`,this.representantes,
 		      {
 		        headers:{
 		          "Authorization": `Bearer ${this.token}`

@@ -144,7 +144,7 @@
 
 		methods: {
       verRecreaciones() {
-        axios.get(`http://127.0.0.1:8000/api/auth/recreacion/${this.municipio}`,{
+        axios.get(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/recreacion/${this.municipio}`,{
             headers:{
               'Authorization': `Bearer ${this.token}`
             },
@@ -186,7 +186,7 @@
           this.loader2 = false
           this.loader = true
 
-          let response = await axios.delete(`http://127.0.0.1:8000/api/auth/recreacion/eliminar/${id}`,{
+          let response = await axios.delete(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/recreacion/eliminar/${id}`,{
             headers:{
               'Authorization': `Bearer ${this.token}`
             }
@@ -211,7 +211,7 @@
       async exportar() {
 
         axios({
-          url: `http://127.0.0.1:8000/api/auth/recreacion/exportar`,
+          url: `https://enigmatic-oasis-44862.herokuapp.com/api/auth/recreacion/exportar`,
           method: 'GET',
           headers:{"Authorization": `Bearer ${this.token}`},
           responseType: 'blob',
@@ -234,7 +234,7 @@
         var $mainForm = ('#mainForm')
         var data = new FormData(mainForm)
 
-        axios.post(`http://127.0.0.1:8000/api/auth/recreacion/importar`, data, {
+        axios.post(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/recreacion/importar`, data, {
             headers:{
               'Authorization': `Bearer ${this.token}`
             }
