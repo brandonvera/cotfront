@@ -70,7 +70,7 @@
 		                    </fg-input>
 		                  </div>
 		                </div>
-		                <div class="row" v-if="user != id">
+		                <div class="row" v-if="currentRol != 1">
 		                  <div class="col-md-12">
 		                    <label for="Estado">Estado</label>
 		                    <select
@@ -86,7 +86,7 @@
 		                  </div>
 		                </div>
 
-		                <div class="row" v-if="user != id">
+		                <div class="row" v-if="currentRol != 1">
 		                  <div class="col-md-12">
 		                    <label for="id_tipo">Rol</label>
 		                    <select
@@ -127,7 +127,7 @@
 				user: localStorage.getItem('user'),
 				tipoActual: null,
 				rol: [],
-				id: null,
+				currentRol: null,
 				usuarios: {
 					codigo: '',
 					nombre: '',
@@ -184,7 +184,7 @@
 		        this.usuarios.id_tipo = id_tipo		    
 		        this.tipoActual = response.data.user.tipo_usuario.tipo_usuario
 
-		        this.id = response.data.usuario.id
+		        this.currentRol = response.data.usuario.id_tipo
 
 		      })
 		      .catch(error => {
@@ -218,11 +218,11 @@
 				        this.loader = false
 				        this.loader2 = true
 
-			        } catch (error) {
+			        } catch (error) {			     
 			          	this.$swal({
 				          icon: 'info',
 				          title: 'Oops...',
-				          text: 'Ocurrió un error, valida la información nuevamente!',
+				          text: 'Ocurrió un érror, valida la información nuevamente!',
 			          	})
 			          	this.loader = false
 			          	this.loader2 = true

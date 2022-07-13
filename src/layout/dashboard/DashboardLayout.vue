@@ -5,7 +5,7 @@
         <sidebar-link 
           to="/municipios" 
           name="Municipios" 
-          icon="ti-world"
+          icon="ti-camera"
         />
         <sidebar-link 
           to="/usuarios" 
@@ -17,6 +17,12 @@
           to="/representantes" 
           name="Representantes" 
           icon="ti-agenda"
+          v-if="rol == 1"
+        />
+        <sidebar-link 
+          to="/mapa" 
+          name="Mapa" 
+          icon="ti-world"
           v-if="rol == 1"
         />
       </template>
