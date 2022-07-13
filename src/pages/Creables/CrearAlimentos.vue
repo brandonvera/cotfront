@@ -115,7 +115,6 @@
 		                        name="Representante"
 		                        id="Representante"
 		                        class="form-control"
-		                        required
 		                        v-model="alimentos.id_representantes"
 		                    >
 		                        <option disabled value="">
@@ -181,7 +180,7 @@
 		    },
 
 		    async Representantes() {
-		      let response = await this.axios.get(`hthttps://enigmatic-oasis-44862.herokuapp.com/api/auth/representante`, {
+		      let response = await this.axios.get(`https://enigmatic-oasis-44862.herokuapp.com/api/auth/representante`, {
 		        headers:{
 		          "Authorization": `Bearer ${this.token}`
 		        }

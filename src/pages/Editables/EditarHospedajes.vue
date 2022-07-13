@@ -116,7 +116,6 @@
 		                        name="Representante"
 		                        id="Representante"
 		                        class="form-control"
-		                        required
 		                        v-model="hospedajes.id_representantes"
 		                    >
 		                        <option disabled value="">

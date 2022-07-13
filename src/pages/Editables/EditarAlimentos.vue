@@ -116,7 +116,6 @@
 		                        name="Representante"
 		                        id="Representante"
 		                        class="form-control"
-		                        required
 		                        v-model="alimentos.id_representantes"
 		                    >
 		                        <option disabled value="">

@@ -115,7 +115,6 @@
 		                        name="Representante"
 		                        id="Representante"
 		                        class="form-control"
-		                        required
 		                        v-model="recreaciones.id_representantes"
 		                    >
 		                        <option disabled value="">

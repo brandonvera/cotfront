@@ -184,7 +184,7 @@
 		        this.usuarios.id_tipo = id_tipo		    
 		        this.tipoActual = response.data.user.tipo_usuario.tipo_usuario
 
-		        this.currentRol = response.data.usuario.id_tipo
+		        this.currentRol = response.data.user.id_tipo
 
 		      })
 		      .catch(error => {
