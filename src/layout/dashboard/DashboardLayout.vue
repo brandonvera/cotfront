@@ -23,7 +23,6 @@
           to="/mapa" 
           name="Mapa" 
           icon="ti-world"
-          v-if="rol == 1"
         />
       </template>
       <mobile-menu>
